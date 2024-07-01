@@ -21,7 +21,7 @@ abstract class DioHelper {
   }) async{
     return await _dio.post(url, queryParameters: query, data: data);
   }
-
+  
   static Future<Response> put({
     required String url,
     Map<String, dynamic>? query,

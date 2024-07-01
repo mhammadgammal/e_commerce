@@ -18,7 +18,7 @@ class UserModel {
     required this.points,
     required this.credit,
   });
-
+  
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
