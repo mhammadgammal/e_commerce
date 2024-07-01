@@ -8,6 +8,13 @@ abstract final class AppStrings {
 
   //#endregion
 
+  //region onBoarding
+
+  static const String purchaseOnline = 'purchase_online';
+  static const String trackOrder = 'track_order';
+  static const String getYourOrder = 'get_your_order';
+  
+  //#endregion
   //#region Successful Strings
   static const String passwordChangedSuccessful = 'password_changed_success';
   static const String logoutSuccessful = 'logout_successful';

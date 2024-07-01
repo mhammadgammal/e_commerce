@@ -64,5 +64,8 @@
   "removed_from_favourites": "تم حذف المكان من المفضلة بنجاح",
   "account_created_success": "تم إنشاء حسابك بنجاح",
   "map": "الخريطة",
-  "search": "بحث"
+  "search": "بحث",
+  "purchase_online": "شراء عبر الإنترنت",
+  "track_order": "تتبع الطلب",
+  "get_your_order": "أحصل على الطلب"
 }

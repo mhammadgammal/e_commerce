@@ -64,5 +64,8 @@
   "removed_from_favourites": "Removed From Favorites Successfully",
   "account_created_success": "Your Account Created Successfully",
   "map": "Map",
-  "search": "Search"
+  "search": "Search",
+  "purchase_online": "Purchase Online",
+  "track_order": "Track Order",
+  "get_your_order": "Get Your Order"
 }

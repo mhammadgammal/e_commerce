@@ -11,11 +11,11 @@ abstract final class AppTheme {
     ),
     iconButtonTheme: const IconButtonThemeData(
       style:
-          ButtonStyle(iconColor: MaterialStatePropertyAll<Color>(Colors.white)),
+          ButtonStyle(iconColor: WidgetStatePropertyAll<Color>(Colors.white)),
     ),
     textButtonTheme: const TextButtonThemeData(
         style: ButtonStyle(
-      foregroundColor: MaterialStatePropertyAll<Color>(AppColors.lightShade2),
+      foregroundColor: WidgetStatePropertyAll<Color>(AppColors.lightShade2),
     )),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -41,14 +41,14 @@ abstract final class AppTheme {
     ),
     searchBarTheme: const SearchBarThemeData(
         backgroundColor:
-            MaterialStatePropertyAll<Color>(AppColors.complementaryColor3)),
+            WidgetStatePropertyAll<Color>(AppColors.complementaryColor3)),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.darkShade7, foregroundColor: Colors.white),
     cardTheme: const CardTheme(
       color: AppColors.cardColor,
     ),
     switchTheme: const SwitchThemeData(
-      trackColor: MaterialStatePropertyAll<Color>(AppColors.lightShade1),
+      trackColor: WidgetStatePropertyAll<Color>(AppColors.lightShade1),
     ),
     textSelectionTheme: const TextSelectionThemeData(
       selectionHandleColor: Colors.white,
