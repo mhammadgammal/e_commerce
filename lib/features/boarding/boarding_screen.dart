@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/theme/app_images.dart';
 import 'package:e_commerce/core/utils/localization/app_strings.dart';
@@ -69,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       floatingActionButton: Visibility(
         visible: isLastPage,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () => AppNavigator.navigateToRegister(context),
           backgroundColor: AppColors.complementaryColor3,
           child: const Icon(Icons.arrow_forward),
         ),
