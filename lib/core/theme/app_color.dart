@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract final class AppColors {
   // static const primaryColor = Color.fromARGB(255, 16, 26, 80);
-  static const primaryColor = Color.fromARGB(255, 46, 67, 173);
+  static const primaryColor = Color.fromRGBO(57, 143, 241, 1.0);
   static const Color fabColor = complementaryColor2; // Yellow
   static const Color cardColor = complementaryColor5;
   static const Color golden = Color(0xFFF1B819);
@@ -37,4 +37,6 @@ abstract final class AppColors {
   static const Color complementaryColor5 = Color(0xffEBB97A);
   static const Color complementaryColor6 = Color(0xffFFE1BD);
   static const Color complementaryColor7 = Color(0xffecddaf);
+
+  static const lightGrey = Color(0xFFD3D3D3);
 }

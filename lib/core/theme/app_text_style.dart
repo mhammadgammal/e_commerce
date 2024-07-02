@@ -5,6 +5,8 @@ final class AppTextStyle {
       TextStyle(color: Colors.white, fontSize: 20.0);
   static const font15WhiteNormal =
       TextStyle(color: Colors.white, fontSize: 15.0);
+  static const font15WhiteBold =
+      TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold);
   static const font20whiteBoldAppbar = TextStyle(
       color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0);
   static const font175WhiteNormal =
@@ -27,4 +29,7 @@ final class AppTextStyle {
   );
   static const font15BlackNormal = TextStyle(
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 15.0);
+
+  static const font17White =TextStyle(
+      color: Colors.black, fontWeight: FontWeight.normal, fontSize: 17.0);
 }

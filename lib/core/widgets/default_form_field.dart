@@ -14,8 +14,8 @@ class DefaultFormFiled extends StatefulWidget {
     this.suffixIcon,
     this.initialValue,
     this.maxLines,
-    this.labelColor = Colors.black,
-    this.iconColor = Colors.black,
+    this.labelColor = AppColors.lightGrey,
+    this.iconColor = AppColors.lightGrey,
     this.textFieldTextColor = Colors.black,
     this.onChanged,
     this.cursorColor = Colors.deepPurple,
@@ -56,21 +56,24 @@ class _DefaultFormFiledState extends State<DefaultFormFiled> {
         iconColor: widget.iconColor,
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
-            borderSide: const BorderSide(color: AppColors.complementaryColor2)),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
-            borderSide: const BorderSide(color: AppColors.complementaryColor2)),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5)),
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
-            borderSide: const BorderSide(color: AppColors.complementaryColor2)),
+            borderSide: const BorderSide(
+                color: AppColors.complementaryColor2, width: 1.5)),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
           borderSide: const BorderSide(
-              color: AppColors.complementaryColor2, style: BorderStyle.solid),
+              color: AppColors.primaryColor,
+              style: BorderStyle.solid,
+              width: 3.0),
         ),
       ),
       maxLines: widget.maxLines,
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       initialValue: widget.initialValue,
       enabled: widget.isEnabled,
       obscureText: widget.obSecure,

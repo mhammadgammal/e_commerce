@@ -5,7 +5,7 @@ import 'app_color.dart';
 abstract final class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    scaffoldBackgroundColor: AppColors.primaryColor,
+    scaffoldBackgroundColor: Colors.white,
     iconTheme: const IconThemeData(
       color: Colors.white,
     ),
@@ -19,7 +19,7 @@ abstract final class AppTheme {
     )),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.complementaryColor2,
+        backgroundColor: AppColors.primaryColor,
         foregroundColor: Colors.black,
       ),
     ),
