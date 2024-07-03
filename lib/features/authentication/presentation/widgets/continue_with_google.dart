@@ -15,7 +15,7 @@ class ContinueWithGoogle extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: double.infinity,
-        height: 45.0,
+        height: 50.0,
         decoration: BoxDecoration(
           border: Border.all(
             color: AppColors.primaryColor,
@@ -45,7 +45,7 @@ class ContinueWithGoogle extends StatelessWidget {
                   ),
                   const Text(
                     '    Continue with Google',
-                    style: AppTextStyle.font15BlackNormal,
+                    style: AppTextStyle.font17BlackBold,
                   ),
                 ],
               ),

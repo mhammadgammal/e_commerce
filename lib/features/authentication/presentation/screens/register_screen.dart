@@ -107,7 +107,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 45.0,
+                height: 50.0,
                 child: ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
@@ -119,24 +119,24 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     child: const Text('Register',
                         textAlign: TextAlign.center,
-                        style: AppTextStyle.font15WhiteBold)),
+                        style: AppTextStyle.font175WhiteBold)),
               ),
               const SizedBox(
                 height: 20,
               ),
               const Text(
                 '----------------------------- OR -----------------------------',
-                style: AppTextStyle.font17White,
+                style: AppTextStyle.font17BlackNormal,
               ),
               const SizedBox(
-                height: 10.0,
+                height: 15.0,
               ),
               ContinueWithGoogle(false, onTap: () {}),
               const SizedBox(
                 height: 10.0,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text('Already have an account?',
                       style: AppTextStyle.font15BlackNormal),

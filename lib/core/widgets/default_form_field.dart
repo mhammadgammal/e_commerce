@@ -44,44 +44,42 @@ class DefaultFormFiled extends StatefulWidget {
 class _DefaultFormFiledState extends State<DefaultFormFiled> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 45.0,
-      child: TextFormField(
-        controller: widget.controller,
-        keyboardType: widget.inputType,
-        style: TextStyle(color: widget.textFieldTextColor),
-        decoration: InputDecoration(
-          labelText: widget.fieldLabel,
-          labelStyle: TextStyle(color: widget.labelColor),
-          prefixIcon: widget.icon,
-          suffixIcon: widget.suffixIcon,
-          iconColor: widget.iconColor,
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(color: Colors.grey, width: 1.5)),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(color: Colors.grey, width: 1.5)),
-          disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              borderSide: const BorderSide(
-                  color: AppColors.complementaryColor2, width: 1.5)),
-          focusedBorder: OutlineInputBorder(
+    return TextFormField(
+      controller: widget.controller,
+      keyboardType: widget.inputType,
+      style: TextStyle(color: widget.textFieldTextColor),
+      decoration: InputDecoration(
+        labelText: widget.fieldLabel,
+        labelStyle: TextStyle(color: widget.labelColor),
+        prefixIcon: widget.icon,
+        suffixIcon: widget.suffixIcon,
+        iconColor: widget.iconColor,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+            borderSide: const BorderSide(color: Colors.grey, width: 1.5)),
+        disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
             borderSide: const BorderSide(
-                color: AppColors.primaryColor,
-                style: BorderStyle.solid,
-                width: 3.0),
-          ),
+                color: AppColors.complementaryColor2, width: 1.5)),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0),
+          borderSide: const BorderSide(
+              color: AppColors.primaryColor,
+              style: BorderStyle.solid,
+              width: 3.0),
         ),
-        maxLines: widget.maxLines,
-        cursorColor: Colors.black,
-        initialValue: widget.initialValue,
-        enabled: widget.isEnabled,
-        obscureText: widget.obSecure,
-        onChanged: widget.onChanged,
-        validator: widget.validate,
       ),
+      maxLines: widget.maxLines,
+      cursorColor: Colors.black,
+      initialValue: widget.initialValue,
+      enabled: widget.isEnabled,
+      obscureText: widget.obSecure,
+      onChanged: widget.onChanged,
+      validator: widget.validate,
     );
   }
 }

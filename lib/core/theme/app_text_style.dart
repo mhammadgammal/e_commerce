@@ -5,13 +5,17 @@ final class AppTextStyle {
       TextStyle(color: Colors.white, fontSize: 20.0);
   static const font15WhiteNormal =
       TextStyle(color: Colors.white, fontSize: 15.0);
-  static const font15WhiteBold =
-      TextStyle(color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold);
-  static const font20whiteBoldAppbar = TextStyle(
+  static const font15WhiteBold = TextStyle(
+      color: Colors.white, fontSize: 15.0, fontWeight: FontWeight.bold);
+  static const font20whiteBold = TextStyle(
       color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20.0);
+  static const font20BlackBold = TextStyle(
+      color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0);
   static const font175WhiteNormal =
       TextStyle(color: Colors.white, fontSize: 17.5);
-  static const fontr20RedNormal = TextStyle(color: Colors.red, fontSize: 20.0);
+  static const font175WhiteBold =
+      TextStyle(color: Colors.white, fontSize: 17.5, fontWeight: FontWeight.bold);
+  static const fontt20RedNormal = TextStyle(color: Colors.red, fontSize: 20.0);
   static const font15GreyNoramlComment =
       TextStyle(color: Colors.grey, fontSize: 15.0);
   static const font30WhiteBoldBody = TextStyle(
@@ -30,6 +34,8 @@ final class AppTextStyle {
   static const font15BlackNormal = TextStyle(
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 15.0);
 
-  static const font17White =TextStyle(
+  static const font17BlackNormal = TextStyle(
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 17.0);
+  static const font17BlackBold = TextStyle(
+      color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0);
 }
