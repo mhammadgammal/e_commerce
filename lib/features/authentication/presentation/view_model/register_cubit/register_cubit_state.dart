@@ -1,6 +1,10 @@
 part of 'register_cubit_bloc.dart';
 
 @immutable
-sealed class RegisterCubitState {}
+sealed class RegisterState {}
 
-final class RegisterCubitInitial extends RegisterCubitState {}
+final class RegisterInitialState extends RegisterState {}
+
+final class RegisterLoadingState extends RegisterState {}
+
+final class RegisterGoogleLoadingState extends RegisterState {}
