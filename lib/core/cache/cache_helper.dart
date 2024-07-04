@@ -16,9 +16,15 @@ class CacheHelper {
           {required String key, required List<String> stringList}) =>
       _sharedPreferences?.setStringList(key, stringList);
 
+  static Future<bool>? putString(
+          {required String key, required String value}) =>
+      _sharedPreferences?.setString(key, value);
+
   static List<String>? getStringList({required String key}) =>
       _sharedPreferences?.getStringList(key);
 
+  static String? getString({required String key}) =>
+      _sharedPreferences?.getString(key);
   static List<String>? getCountries() =>
       _sharedPreferences?.getStringList(CacheKeys.countries);
 
