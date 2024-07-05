@@ -23,6 +23,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   var phoneNumberController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  bool obscureText = true;
   // #endregion
 
   // #region validators
@@ -73,6 +74,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     } else {
       emit(RegisterErrorState());
     }
+  }
+
+  changePasswordVisibility() {
+    obscureText = !obscureText;
+    emit(RegisterChangePasswordVisibilityState());
   }
 
   void registerWihGoogle() {}

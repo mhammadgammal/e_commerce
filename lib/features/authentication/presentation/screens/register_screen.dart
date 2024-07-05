@@ -2,6 +2,7 @@ import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/core/widgets/default_form_field.dart';
+import 'package:e_commerce/features/authentication/presentation/widgets/authentication_btn.dart';
 import 'package:e_commerce/features/authentication/presentation/widgets/continue_with_google.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,14 +30,14 @@ class RegisterScreen extends StatelessWidget {
                     start: 15.0, end: 15.0, top: 65.0),
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
                         ' Register',
-                        style: AppTextStyle.font30BlackBold,
+                        style: AppTextStyle.font35BlackBold,
                       ),
                       const Text('  Ready! to start your shopping journey...',
-                          style: AppTextStyle.font15BlackNormal),
+                          style: AppTextStyle.font17GreyNormal),
                       const SizedBox(
                         height: 30,
                       ),
@@ -100,6 +101,16 @@ class RegisterScreen extends StatelessWidget {
                           controller: cubit.passwordController,
                           inputType: TextInputType.visiblePassword,
                           fieldLabel: 'password',
+                          obSecure: cubit.obscureText,
+                          suffixIcon: IconButton(
+                              onPressed: () => cubit.changePasswordVisibility(),
+                              icon: Icon(
+                                cubit.obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: AppColors.lightGrey,
+                              )),
+                          maxLines: 1,
                           icon: const Icon(
                             Icons.lock,
                             color: AppColors.lightGrey,
@@ -108,36 +119,16 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      SizedBox(
-                          width: double.infinity,
-                          height: 50.0,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (cubit.formKey.currentState!.validate()) {
-                                cubit.register();
-                              }
-                            },
-                            style: ButtonStyle(
-                              shape: WidgetStateProperty.all<
-                                  RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                              ),
-                            ),
-                            child: state is RegisterLoadingState
-                                ? const CircularProgressIndicator(
-                                    color: Colors.white,
-                                  )
-                                : const Text('Register',
-                                    textAlign: TextAlign.center,
-                                    style: AppTextStyle.font175WhiteBold),
-                          )),
+                      AuthenticationBtn(
+                        text: 'Register',
+                        isLoading: state is RegisterLoadingState ? true : false,
+                        authPress: () => cubit.register(),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
                       const Text(
-                        '----------------------------- OR -----------------------------',
+                        ' ---------------------------------- OR ----------------------------------',
                         style: AppTextStyle.font17BlackNormal,
                       ),
                       const SizedBox(
@@ -149,12 +140,13 @@ class RegisterScreen extends StatelessWidget {
                         height: 10.0,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           const Text('Already have an account?',
                               style: AppTextStyle.font15BlackNormal),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                AppNavigator.navigateToLogin(context),
                             child: const Text(
                               'Login',
                               style: TextStyle(color: AppColors.primaryColor),

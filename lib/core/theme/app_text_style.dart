@@ -13,8 +13,8 @@ final class AppTextStyle {
       color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0);
   static const font175WhiteNormal =
       TextStyle(color: Colors.white, fontSize: 17.5);
-  static const font175WhiteBold =
-      TextStyle(color: Colors.white, fontSize: 17.5, fontWeight: FontWeight.bold);
+  static const font175WhiteBold = TextStyle(
+      color: Colors.white, fontSize: 17.5, fontWeight: FontWeight.bold);
   static const fontt20RedNormal = TextStyle(color: Colors.red, fontSize: 20.0);
   static const font15GreyNoramlComment =
       TextStyle(color: Colors.grey, fontSize: 15.0);
@@ -26,13 +26,16 @@ final class AppTextStyle {
 
   static const font16BlackNormal = TextStyle(
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 16.0);
-  static const font30BlackBold = TextStyle(
-    fontSize: 30.0,
+  static const font35BlackBold = TextStyle(
+    fontSize: 35.0,
     fontWeight: FontWeight.bold,
     color: Colors.black,
   );
   static const font15BlackNormal = TextStyle(
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 15.0);
+
+  static const font17GreyNormal = TextStyle(
+      color: Colors.grey, fontWeight: FontWeight.normal, fontSize: 17.0);
 
   static const font17BlackNormal = TextStyle(
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 17.0);

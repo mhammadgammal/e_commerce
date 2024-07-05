@@ -22,7 +22,7 @@ class OnBoardingItem extends StatelessWidget {
         Image.asset(image),
         const SizedBox(height: 30),
         Text(AppLocalizations.of(context).translate(title),
-            style: AppTextStyle.font30BlackBold),
+            style: AppTextStyle.font35BlackBold),
         const SizedBox(height: 15),
         Text(subtitle,
             style: AppTextStyle.font16BlackNormal, textAlign: TextAlign.center),
