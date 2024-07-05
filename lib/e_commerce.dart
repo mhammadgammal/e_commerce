@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/cache/cache_helper.dart';
+import 'package:e_commerce/core/cache/cache_keys.dart';
 import 'package:e_commerce/core/di/di.dart';
 import 'package:e_commerce/core/router/app_router.dart';
 import 'package:e_commerce/core/router/router_helper.dart';
@@ -13,14 +15,18 @@ class ECommerceApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    String? token = sl<CacheHelper>().getString(key: CacheKeys.token);
+    print(token);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: RouterHelper.onBoarding,
+      initialRoute: token != null
+          ? RouterHelper.homeScreen
+          : RouterHelper.onBoarding,
       routes: AppRouter.generateRoute,
       locale: appLanguage.appLocal,
-          supportedLocales: LocalizeConstants.supportedLocales,
-          localizationsDelegates: LocalizeConstants.delegates,
+      supportedLocales: LocalizeConstants.supportedLocales,
+      localizationsDelegates: LocalizeConstants.delegates,
     );
   }
 }

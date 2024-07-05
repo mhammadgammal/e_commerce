@@ -7,7 +7,10 @@ abstract class AppNavigator {
 
   static void navigateAndFinishToLogin(BuildContext context) =>
       Navigator.popAndPushNamed(context, RouterHelper.login);
-      
+
   static void navigateToLogin(BuildContext context) =>
       Navigator.pushNamed(context, RouterHelper.login);
+
+  static void navigateAndFinishToHomeScreen(BuildContext context) =>
+      Navigator.popAndPushNamed(context, RouterHelper.homeScreen);
 }

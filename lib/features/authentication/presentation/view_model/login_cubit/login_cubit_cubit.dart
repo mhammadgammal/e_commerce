@@ -50,9 +50,12 @@ class LoginCubitCubit extends Cubit<LoginCubitState> {
 
     var user = await _loginUsecase.perform(RegisterParams(
         email: emailController.text, password: passwordController.text));
-
+    
     if (user != null) {
-      sl<CacheHelper>().putString(key: CacheKeys.token, value: user.token);
+      print('user token: ${user.token}');
+      bool? isSaaved = await sl<CacheHelper>()
+          .putString(key: CacheKeys.token, value: user.token);
+      print('token saved: $isSaaved');
       emit(LoginSuccessState());
     } else {
       emit(LoginFailureState());
