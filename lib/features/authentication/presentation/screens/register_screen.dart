@@ -1,10 +1,10 @@
+import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/core/widgets/default_form_field.dart';
 import 'package:e_commerce/features/authentication/presentation/widgets/continue_with_google.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../view_model/register_cubit/register_cubit_bloc.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -13,7 +13,12 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is RegisterSuccessState) {
+          // Navigator.pushNamed(context, 'login');
+          AppNavigator.navigateAndFinishToLogin(context);
+        }
+      },
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return Scaffold(
@@ -104,9 +109,9 @@ class RegisterScreen extends StatelessWidget {
                         height: 20,
                       ),
                       SizedBox(
-                        width: double.infinity,
-                        height: 50.0,
-                        child: ElevatedButton(
+                          width: double.infinity,
+                          height: 50.0,
+                          child: ElevatedButton(
                             onPressed: () {
                               if (cubit.formKey.currentState!.validate()) {
                                 cubit.register();
@@ -120,10 +125,14 @@ class RegisterScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            child: const Text('Register',
-                                textAlign: TextAlign.center,
-                                style: AppTextStyle.font175WhiteBold)),
-                      ),
+                            child: state is RegisterLoadingState
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                : const Text('Register',
+                                    textAlign: TextAlign.center,
+                                    style: AppTextStyle.font175WhiteBold),
+                          )),
                       const SizedBox(
                         height: 20,
                       ),
@@ -134,7 +143,8 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(
                         height: 15.0,
                       ),
-                      ContinueWithGoogle(false, onTap: () {}),
+                      ContinueWithGoogle(false,
+                          onTap: () => AppNavigator.navigateToLogin(context)),
                       const SizedBox(
                         height: 10.0,
                       ),

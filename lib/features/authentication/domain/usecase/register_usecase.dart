@@ -1,4 +1,3 @@
-import 'package:e_commerce/core/di/di.dart';
 import 'package:e_commerce/features/authentication/data/repositories/authentcation_repository_impl.dart';
 import 'package:e_commerce/features/authentication/domain/entity/register_params.dart';
 import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
@@ -9,8 +8,6 @@ class RegisterUsecase implements BaseUseCase {
 
   RegisterUsecase(this._authentcationRepositoryImpl);
   @override
-  Future<UserModel?> perform(RegisterParams params) {
-    _authentcationRepositoryImpl.register(sl<UserModel>());
-    return Future.value(null);
-  }
+  Future<UserModel?> perform(RegisterParams params) =>
+      _authentcationRepositoryImpl.register(params);
 }

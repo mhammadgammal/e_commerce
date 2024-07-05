@@ -1,7 +1,11 @@
+import 'package:e_commerce/core/cache/cache_helper.dart';
+import 'package:e_commerce/core/cache/cache_keys.dart';
+import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
 import 'package:e_commerce/features/authentication/domain/usecase/register_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/di/di.dart';
 import '../../../domain/entity/register_params.dart';
 
 part 'register_cubit_state.dart';
@@ -40,14 +44,16 @@ class RegisterCubit extends Cubit<RegisterState> {
               ? 'Password must be at least 8 characters'
               : null;
   // #endregion
-  void register({bool withGoogle = false}) {
+  void register({bool withGoogle = false}) async {
     if (withGoogle) {
       emit(RegisterGoogleLoadingState());
       registerWihGoogle();
     }
+
+    emit(RegisterLoadingState());
     var name = '${firstNameController.text} ${lastNameController.text}';
 
-    registerUsecase.perform(
+    var user = await registerUsecase.perform(
       RegisterParams(
         name: name,
         email: emailController.text,
@@ -55,6 +61,18 @@ class RegisterCubit extends Cubit<RegisterState> {
         phoneNumber: phoneNumberController.text,
       ),
     );
+
+    if (user != null) {
+      sl<CacheHelper>().putString(key: CacheKeys.token, value: user.token);
+      sl<UserModel>().id = user.id;
+      sl<UserModel>().name = user.name;
+      sl<UserModel>().email = user.email;
+      sl<UserModel>().phone = user.phone;
+
+      emit(RegisterSuccessState());
+    } else {
+      emit(RegisterErrorState());
+    }
   }
 
   void registerWihGoogle() {}

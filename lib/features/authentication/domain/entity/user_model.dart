@@ -3,8 +3,8 @@ class UserModel {
   String name;
   String email;
   String phone;
-  String? image;
-  String? token;
+  String image;
+  String token;
   String points;
   String credit;
 
@@ -21,14 +21,14 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'],
+      id: json['id'].toString(),
       name: json['name'],
       email: json['email'],
       phone: json['phone'],
       image: json['image'],
       token: json['token'],
-      points: json['points'],
-      credit: json['credit'],
+      points: json['points'].toString(),
+      credit: json['credit'].toString(),
     );
   }
 
