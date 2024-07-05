@@ -7,6 +7,8 @@ import 'package:e_commerce/features/authentication/domain/entity/user_model.dart
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/home/data/network/products_api_service.dart';
+import '../../features/home/data/repositories/products_repository_impl.dart';
 import '../utils/localization/app_localization.dart';
 
 final sl = GetIt.instance;
@@ -53,6 +55,13 @@ Future<void> init() async {
       () => AuthentcationRepositoryImpl(sl.get()));
   sl.registerLazySingleton<AuthenticationApiServiceImpl>(
       () => AuthenticationApiServiceImpl());
+  // #endregion
 
+  // #region Home Products
+  sl.registerLazySingleton<ProductsApiServiceImpl>(
+      () => ProductsApiServiceImpl());
+  sl.registerLazySingleton<ProductsRepositoryImpl>(
+      () => ProductsRepositoryImpl(sl.get()));
+  
   // #endregion
 }

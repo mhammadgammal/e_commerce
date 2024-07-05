@@ -4,6 +4,7 @@ import 'package:e_commerce/features/authentication/presentation/screens/register
 import 'package:e_commerce/features/authentication/presentation/view_model/login_cubit/login_cubit_cubit.dart';
 import 'package:e_commerce/features/authentication/presentation/view_model/register_cubit/register_cubit_bloc.dart';
 import 'package:e_commerce/features/boarding/boarding_screen.dart';
+import 'package:e_commerce/features/home/domain/usecase/get_products_usecase.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class AppRouter {
           child: const LoginScreen(),
         ),
     RouterHelper.homeScreen: (_) => BlocProvider(
-          create: (context) => HomeCubit(),
+          create: (context) => HomeCubit(GetProductsUsecase(sl.get()))..fetch(),
           child: const HomeScreen(),
         ),
   };
