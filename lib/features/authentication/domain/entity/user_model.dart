@@ -3,8 +3,8 @@ class UserModel {
   String name;
   String email;
   String phone;
-  String image;
-  String token;
+  String? image;
+  String? token;
   String points;
   String credit;
 
@@ -18,7 +18,7 @@ class UserModel {
     required this.points,
     required this.credit,
   });
-  
+
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
@@ -30,5 +30,18 @@ class UserModel {
       points: json['points'],
       credit: json['credit'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'email': email,
+      'phone': phone,
+      'image': image,
+      'token': token,
+      'points': points,
+      'credit': credit,
+    };
   }
 }

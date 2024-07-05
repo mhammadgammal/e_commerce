@@ -1,19 +1,24 @@
 import 'package:dio/dio.dart';
+import 'package:e_commerce/core/cache/cache_helper.dart';
 import 'package:e_commerce/core/cache/cache_keys.dart';
 import 'package:e_commerce/core/utils/api_utils/api_end_points.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class DioHelper {
   final Dio _dio;
-  final SharedPreferences _sharedPreferences;
+  final CacheHelper _sharedPreferences;
 
   DioHelper(this._dio, this._sharedPreferences) {
+    _init();
+  }
+
+  void _init() {
+    print('creating: ${_dio.hashCode}');
     _dio
       ..options.baseUrl = ApiEndPoints.baseUrl
       ..options.headers = {
         "Content-Type": "application/json",
         "lang": "en",
-        'Authorization': '${_sharedPreferences.getString(CacheKeys.token)}'
+        'Authorization': '${_sharedPreferences.getString(key: CacheKeys.token)}'
       };
   }
 
@@ -27,7 +32,7 @@ class DioHelper {
   Future<Response> post({
     required String url,
     Map<String, dynamic>? query,
-    dynamic data,
+    required dynamic data,
   }) async {
     return await _dio.post(url, queryParameters: query, data: data);
   }

@@ -1,11 +1,15 @@
+import 'package:e_commerce/features/authentication/domain/usecase/register_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../domain/entity/register_params.dart';
 
 part 'register_cubit_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit() : super(RegisterInitialState());
+  RegisterCubit(this.registerUsecase) : super(RegisterInitialState());
 
+  final RegisterUsecase registerUsecase;
   static RegisterCubit get(BuildContext context) => BlocProvider.of(context);
 
   // #region controllers
@@ -41,10 +45,17 @@ class RegisterCubit extends Cubit<RegisterState> {
       emit(RegisterGoogleLoadingState());
       registerWihGoogle();
     }
+    var name = '${firstNameController.text} ${lastNameController.text}';
 
-    
+    registerUsecase.perform(
+      RegisterParams(
+        name: name,
+        email: emailController.text,
+        password: passwordController.text,
+        phoneNumber: phoneNumberController.text,
+      ),
+    );
   }
-  
+
   void registerWihGoogle() {}
-  
 }

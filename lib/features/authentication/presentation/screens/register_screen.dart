@@ -12,11 +12,8 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<RegisterCubit, RegisterState>(
-      listener: (context, state) {
-        
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         var cubit = RegisterCubit.get(context);
         return Scaffold(
@@ -112,10 +109,7 @@ class RegisterScreen extends StatelessWidget {
                         child: ElevatedButton(
                             onPressed: () {
                               if (cubit.formKey.currentState!.validate()) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Processing Data')),
-                                );
+                                cubit.register();
                               }
                             },
                             style: ButtonStyle(
