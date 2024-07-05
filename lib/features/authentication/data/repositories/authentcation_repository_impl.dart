@@ -13,9 +13,19 @@ class AuthentcationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<UserModel?> login(UserModel user) {
-    // TODO: implement login
-    throw UnimplementedError();
+  Future<UserModel?> login(RegisterParams params) async {
+    try {
+      final response =
+          await _authenticationApiServiceImpl.login(params.email, params.password);
+      print('login response: $response');
+      if (response.data['data'] != null) {
+        return UserModel.fromJson(response.data['data']);
+      }
+    } catch (e) {
+      print('login error: $e');
+    }
+
+    return null;
   }
 
   @override

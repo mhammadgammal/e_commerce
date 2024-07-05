@@ -7,4 +7,8 @@ final class LoginCubitInitial extends LoginCubitState {}
 
 final class LoginLoadingState extends LoginCubitState {}
 
+final class LoginSuccessState extends LoginCubitState {}
+
+final class LoginFailureState extends LoginCubitState {}
+
 final class LoginChangePasswordVisibilityState extends LoginCubitState {}

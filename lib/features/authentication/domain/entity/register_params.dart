@@ -1,12 +1,12 @@
 class RegisterParams {
-  String name;
+  String? name;
   String email;
   String password;
-  String phoneNumber;
+  String? phoneNumber;
 
   RegisterParams(
-      {required this.name,
+      {this.name,
+      this.phoneNumber,
       required this.email,
-      required this.password,
-      required this.phoneNumber});
+      required this.password,});
 }

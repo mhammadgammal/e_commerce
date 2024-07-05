@@ -25,90 +25,96 @@ class LoginScreen extends StatelessWidget {
                 padding: const EdgeInsetsDirectional.only(
                     start: 15.0, end: 15.0, top: 65.0),
                 child: Form(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Login',
-                      style: AppTextStyle.font35BlackBold,
-                    ),
-                    const SizedBox(height: 5.0),
-                    const Text(
-                      'Welcome Back to the app!',
-                      style: AppTextStyle.font17GreyNormal,
-                    ),
-                    const SizedBox(height: 50.0),
-                    DefaultFormFiled(
-                        controller: cubit.emailController,
-                        inputType: TextInputType.emailAddress,
-                        fieldLabel: 'Email Address',
-                        icon: const Icon(
-                          Icons.email_outlined,
-                          color: Colors.grey,
-                        ),
-                        validate: cubit.validateEmail),
-                    const SizedBox(height: 25.0),
-                    DefaultFormFiled(
-                        controller: cubit.passwordController,
-                        inputType: TextInputType.visiblePassword,
-                        fieldLabel: 'Password',
-                        icon: const Icon(
-                          Icons.lock_outline,
-                          color: Colors.grey,
-                        ),
-                        obSecure: cubit.obscureText,
-                        suffixIcon: IconButton(
-                            onPressed: () => cubit.changePasswordVisibility(),
-                            icon: Icon(
-                              cubit.obscureText
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
-                              color: AppColors.lightGrey,
-                            )),
-                        maxLines: 1,
-                        validate: cubit.validatePassword),
-                    TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Forgot Password?',
-                          style: TextStyle(color: AppColors.primaryColor),
-                        )),
-                    const SizedBox(height: 35.0),
-                    AuthenticationBtn(
-                        isLoading: state is LoginLoadingState ? true : false,
-                        text: 'Login',
-                        authPress: () => cubit.login()),
-                    const SizedBox(
-                      height: 35.0,
-                    ),
-                    const Text(
-                      ' ---------------------------------- OR ----------------------------------',
-                      style: AppTextStyle.font17BlackNormal,
-                    ),
-                    const SizedBox(
-                      height: 35.0,
-                    ),
-                    ContinueWithGoogle(false,
-                        onTap: () => cubit.loginWithGoogle()),
-                    const SizedBox(
-                      height: 10.0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        const Text('Don\'t have an account?'),
-                        TextButton(
-                          onPressed: () =>
-                              AppNavigator.navigateToRegister(context),
-                          child: const Text(
-                            'Register',
-                            style: TextStyle(color: AppColors.primaryColor),
+                    child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Login',
+                        style: AppTextStyle.font35BlackBold,
+                      ),
+                      const SizedBox(height: 5.0),
+                      const Text(
+                        'Welcome Back to the app!',
+                        style: AppTextStyle.font17GreyNormal,
+                      ),
+                      const SizedBox(height: 50.0),
+                      DefaultFormFiled(
+                          controller: cubit.emailController,
+                          inputType: TextInputType.emailAddress,
+                          fieldLabel: 'Email Address',
+                          icon: const Icon(
+                            Icons.email_outlined,
+                            color: Colors.grey,
                           ),
-                        ),
-                      ],
-                    )
-                  ],
+                          validate: cubit.validateEmail),
+                      const SizedBox(height: 25.0),
+                      DefaultFormFiled(
+                          controller: cubit.passwordController,
+                          inputType: TextInputType.visiblePassword,
+                          fieldLabel: 'Password',
+                          icon: const Icon(
+                            Icons.lock_outline,
+                            color: Colors.grey,
+                          ),
+                          obSecure: cubit.obscureText,
+                          suffixIcon: IconButton(
+                              onPressed: () => cubit.changePasswordVisibility(),
+                              icon: Icon(
+                                cubit.obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: AppColors.lightGrey,
+                              )),
+                          maxLines: 1,
+                          validate: cubit.validatePassword),
+                      TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            'Forgot Password?',
+                            style: TextStyle(color: AppColors.primaryColor),
+                          )),
+                      const SizedBox(height: 35.0),
+                      AuthenticationBtn(
+                          isLoading: state is LoginLoadingState ? true : false,
+                          text: 'Login',
+                          authPress: () {
+                            if (cubit.formKey.currentState!.validate()) {
+                              cubit.login();
+                            }
+                          }),
+                      const SizedBox(
+                        height: 35.0,
+                      ),
+                      const Text(
+                        ' ---------------------------------- OR ----------------------------------',
+                        style: AppTextStyle.font17BlackNormal,
+                      ),
+                      const SizedBox(
+                        height: 35.0,
+                      ),
+                      ContinueWithGoogle(false,
+                          onTap: () => cubit.loginWithGoogle()),
+                      const SizedBox(
+                        height: 10.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Text('Don\'t have an account?'),
+                          TextButton(
+                            onPressed: () =>
+                                AppNavigator.navigateToRegister(context),
+                            child: const Text(
+                              'Register',
+                              style: TextStyle(color: AppColors.primaryColor),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 )),
               )),
         );

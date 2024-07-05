@@ -19,7 +19,7 @@ class AuthenticationBtn extends StatelessWidget {
         width: double.infinity,
         height: 50.0,
         child: ElevatedButton(
-          onPressed: () => authPress,
+          onPressed: authPress,
           style: ButtonStyle(
             shape: WidgetStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(

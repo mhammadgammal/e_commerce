@@ -7,6 +7,7 @@ import 'package:e_commerce/features/boarding/boarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/authentication/domain/usecase/login_usecase.dart';
 import '../../features/authentication/domain/usecase/register_usecase.dart';
 import '../di/di.dart';
 
@@ -22,7 +23,9 @@ class AppRouter {
         ),
 
     RouterHelper.login: (_) => BlocProvider(
-          create: (_) => LoginCubitCubit(),
+          create: (_) => LoginCubitCubit(
+            LoginUsecase(sl.get()),
+          ),
           child: const LoginScreen(),
         ),
   };
