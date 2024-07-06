@@ -3,7 +3,7 @@ import 'package:e_commerce/features/authentication/domain/entity/register_params
 import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
 import 'package:e_commerce/core/base_use_case/base_auth_usecase.dart';
 
-class RegisterUsecase implements BaseUseCase {
+class RegisterUsecase implements BaseAuthUseCase {
   final AuthentcationRepositoryImpl _authentcationRepositoryImpl;
 
   RegisterUsecase(this._authentcationRepositoryImpl);

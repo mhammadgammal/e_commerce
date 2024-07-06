@@ -40,7 +40,7 @@ class _ScreenViewState extends State<ScreenView> {
                   )..fetch(),
                   child: const HomeScreen(),
                 );
- 
+
               case RouterHelper.profile:
                 return const Center(
                   child: Text('Profile'),

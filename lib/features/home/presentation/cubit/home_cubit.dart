@@ -1,3 +1,4 @@
+import 'package:e_commerce/features/categories/domain/entity/category_entity/category_model.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_ad_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_banners_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_products_usecase.dart';
@@ -23,6 +24,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
   final searchController = TextEditingController();
   List<ProductModel> products = [];
   List<BannerModel> banners = [];
+  List<CategoryModel> categories = [];
   String ads = '';
   int currentIndex = 0;
 

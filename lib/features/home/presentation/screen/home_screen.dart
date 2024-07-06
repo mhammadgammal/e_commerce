@@ -3,7 +3,7 @@ import 'package:e_commerce/features/home/presentation/widgets/banners_widget.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../widgets/categiry_widget.dart';
+import '../widgets/recommended_products_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,11 +25,19 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              CategorySection(
+              RecommendedProducts(
                 title: 'Recommended For You',
                 products: cubit.products,
                 onItemPressed: (product) {},
-              )
+              ),
+              const SizedBox(
+                height: 15.0,
+              ),
+              RecommendedProducts(
+                title: 'Best Selling',
+                products: cubit.products,
+                onItemPressed: (product) {},
+              ),
             ],
           ),
         );

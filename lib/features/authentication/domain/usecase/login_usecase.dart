@@ -4,7 +4,7 @@ import 'package:e_commerce/core/base_use_case/base_auth_usecase.dart';
 import '../../data/repositories/authentcation_repository_impl.dart';
 import '../entity/user_model.dart';
 
-class LoginUsecase implements BaseUseCase {
+class LoginUsecase implements BaseAuthUseCase {
   final AuthentcationRepositoryImpl _authenticationRepo;
 
   LoginUsecase(this._authenticationRepo);

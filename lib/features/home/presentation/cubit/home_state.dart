@@ -15,4 +15,6 @@ final class AdLoadedSuccessfullyState extends HomeCubitState {}
 
 final class BannersLoadedSuccessfullyState extends HomeCubitState {}
 
+final class CategoriesLoadedSuccessfullyState extends HomeCubitState {}
+
 final class RecommendedProductsLoadedSuccessfullyState extends HomeCubitState {}

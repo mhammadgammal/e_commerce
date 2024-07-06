@@ -16,6 +16,7 @@ class AppLayout extends StatelessWidget {
         final cubit = AppCubit.get(context);
         return Scaffold(
           appBar: AppBar(
+            scrolledUnderElevation: 0.0,
             title: const Text(
               'Salla',
               style: AppTextStyle.font35BlackBold,
@@ -33,6 +34,8 @@ class AppLayout extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: cubit.currentIndex,
             onTap: cubit.changeIndex,
+            backgroundColor: Colors.white,
+            elevation: 0.0,
             fixedColor: Colors.black,
             type: BottomNavigationBarType.fixed,
             enableFeedback: false,

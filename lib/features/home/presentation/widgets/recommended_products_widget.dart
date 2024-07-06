@@ -2,8 +2,8 @@ import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:flutter/material.dart';
 import '../../domain/entity/product_entity/product_model.dart';
 
-class CategorySection extends StatelessWidget {
-  const CategorySection(
+class RecommendedProducts extends StatelessWidget {
+  const RecommendedProducts(
       {super.key,
       required this.title,
       required this.products,
