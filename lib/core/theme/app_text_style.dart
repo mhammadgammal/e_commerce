@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:flutter/material.dart';
 
 final class AppTextStyle {
@@ -41,4 +42,14 @@ final class AppTextStyle {
       color: Colors.black, fontWeight: FontWeight.normal, fontSize: 17.0);
   static const font17BlackBold = TextStyle(
       color: Colors.black, fontWeight: FontWeight.bold, fontSize: 17.0);
+  static const discount = TextStyle(
+      color: Colors.green, fontWeight: FontWeight.w200, fontSize: 14.0);
+  static const oldPriceText = TextStyle(
+      color: AppColors.lightGrey,
+      fontWeight: FontWeight.normal,
+      fontSize: 14.0,
+      decoration: TextDecoration.lineThrough);
+
+  static const font15BlackBold = TextStyle(
+      color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15.0);
 }

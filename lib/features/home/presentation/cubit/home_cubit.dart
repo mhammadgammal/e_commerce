@@ -1,9 +1,8 @@
 import 'package:e_commerce/features/home/domain/usecase/get_ad_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_banners_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_products_usecase.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
-
 import '../../domain/entity/banner_model.dart';
 import '../../domain/entity/product_model.dart';
 
@@ -19,9 +18,13 @@ class HomeCubit extends Cubit<HomeCubitState> {
     this._getAdUsecase,
   ) : super(HomeCubitInitial());
 
+  static HomeCubit get(BuildContext context) => BlocProvider.of(context);
+
+  final searchController = TextEditingController();
   List<ProductModel> products = [];
   List<BannerModel> banners = [];
   String ads = '';
+  int currentIndex = 0;
 
   void fetch() async {
     emit(HomeCubitLoading());
@@ -44,5 +47,10 @@ class HomeCubit extends Cubit<HomeCubitState> {
   Future<void> _fetchAd() async {
     ads = await _getAdUsecase.perform();
     emit(AdLoadedSuccessfullyState());
+  }
+
+  void changeIndex(int index) {
+    currentIndex = index;
+    emit(IndexChangedState());
   }
 }
