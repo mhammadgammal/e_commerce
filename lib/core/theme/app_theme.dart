@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 
 import 'app_color.dart';
+
 abstract final class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
@@ -44,8 +44,14 @@ abstract final class AppTheme {
             WidgetStatePropertyAll<Color>(AppColors.complementaryColor3)),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.darkShade7, foregroundColor: Colors.white),
-    cardTheme: const CardTheme(
-      color: AppColors.cardColor,
+    cardTheme: CardTheme(
+      elevation: 1.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(
+          10.0,
+        ),
+      ),
+      color: Colors.white,
     ),
     switchTheme: const SwitchThemeData(
       trackColor: WidgetStatePropertyAll<Color>(AppColors.lightShade1),

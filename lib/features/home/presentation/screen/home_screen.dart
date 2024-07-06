@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           body: ListView(
             shrinkWrap: true,
-            physics: const BouncingScrollPhysics(),
+            physics: const ClampingScrollPhysics(),
             children: [
               const SizedBox(
                 height: 15.0,

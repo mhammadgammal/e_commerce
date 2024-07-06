@@ -16,10 +16,12 @@ class BannersWidget extends StatelessWidget {
       items: List.generate(
         banners.length,
         (index) => Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Image.network(
-              height: 100.0, fit: BoxFit.cover, banners[index].image),
-        ),
+            padding: const EdgeInsets.all(5.0),
+            child: ClipRRect(
+              // Added ClipRRect
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.network(fit: BoxFit.cover, banners[index].image),
+            )),
       ),
       options: CarouselOptions(
         aspectRatio: 16.0 / 9.0,
