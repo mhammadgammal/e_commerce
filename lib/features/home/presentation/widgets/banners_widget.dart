@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../domain/entity/banner_model.dart';
+import '../../domain/entity/banner_entity/banner_model.dart';
 
 class BannersWidget extends StatelessWidget {
   const BannersWidget({super.key, required this.banners, this.changeIndex});

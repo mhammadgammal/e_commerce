@@ -1,5 +1,5 @@
 import 'package:e_commerce/features/home/data/network/products_api_service.dart';
-import 'package:e_commerce/features/home/domain/entity/products_response.dart';
+import 'package:e_commerce/features/home/domain/entity/product_entity/products_response.dart';
 
 import '../../domain/repositories/products_repository.dart';
 

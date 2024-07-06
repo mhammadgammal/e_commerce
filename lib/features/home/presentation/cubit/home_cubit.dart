@@ -3,8 +3,8 @@ import 'package:e_commerce/features/home/domain/usecase/get_banners_usecase.dart
 import 'package:e_commerce/features/home/domain/usecase/get_products_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../domain/entity/banner_model.dart';
-import '../../domain/entity/product_model.dart';
+import '../../domain/entity/banner_entity/banner_model.dart';
+import '../../domain/entity/product_entity/product_model.dart';
 
 part 'home_state.dart';
 

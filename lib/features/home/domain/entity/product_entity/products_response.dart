@@ -1,4 +1,4 @@
-import 'banner_model.dart';
+import '../banner_entity/banner_model.dart';
 import 'product_model.dart';
 
 class ProductsResponse {
