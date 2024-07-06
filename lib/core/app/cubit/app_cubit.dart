@@ -16,15 +16,15 @@ class AppCubit extends Cubit<AppState> {
   int currentIndex = 0;
 
   List<(Widget, String, String)> screens = [
-    (const Icon(Icons.home), 'Home', RouterHelper.home),
+    (const Icon(Icons.home, size: 30,), 'Home', RouterHelper.home),
     (
-      Image.asset(AppImages.categoriesIc),
+      Image.asset(AppImages.categoriesIc, width: 30.0, height: 30.0),
       'Categories',
       RouterHelper.categories
     ),
-    (const Icon(Icons.person_2_outlined), 'Profile', RouterHelper.profile),
+    (const Icon(Icons.person_2_outlined, size: 30,), 'Profile', RouterHelper.profile),
     (
-      const Icon(Icons.shopping_cart_outlined),
+      const Icon(Icons.shopping_cart_outlined, size: 30,),
       'Cart',
       RouterHelper.cart,
     )

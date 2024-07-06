@@ -9,17 +9,28 @@ import '../../features/home/presentation/cubit/home_cubit.dart';
 import '../../features/home/presentation/screen/home_screen.dart';
 import '../di/di.dart';
 
-class ScreenView extends StatelessWidget {
+class ScreenView extends StatefulWidget {
   const ScreenView(this.routeName, {super.key});
 
   final String routeName;
+
+  @override
+  State<ScreenView> createState() => _ScreenViewState();
+}
+
+class _ScreenViewState extends State<ScreenView> {
   @override
   Widget build(BuildContext context) {
+    print(widget.routeName);
     return Navigator(
       onGenerateRoute: (settings) => MaterialPageRoute(
           settings: settings,
           builder: (context) {
-            switch (routeName) {
+            switch (widget.routeName) {
+              case RouterHelper.categories:
+                return const Center(
+                  child: Text('Categories'),
+                );
               case RouterHelper.home:
                 return BlocProvider(
                   create: (context) => HomeCubit(
@@ -29,10 +40,7 @@ class ScreenView extends StatelessWidget {
                   )..fetch(),
                   child: const HomeScreen(),
                 );
-              case RouterHelper.categories:
-                return const Center(
-                  child: Text('Categories'),
-                );
+ 
               case RouterHelper.profile:
                 return const Center(
                   child: Text('Profile'),
@@ -48,23 +56,5 @@ class ScreenView extends StatelessWidget {
             }
           }),
     );
-  }
-}
-
-class ViewNavigatorObserver extends NavigatorObserver {
-  ViewNavigatorObserver(this.onNavigation);
-
-  final VoidCallback onNavigation;
-
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    super.didPush(route, previousRoute);
-    onNavigation();
-  }
-
-  @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    super.didPop(route, previousRoute);
-    onNavigation();
   }
 }
