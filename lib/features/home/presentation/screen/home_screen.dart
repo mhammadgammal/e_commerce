@@ -1,5 +1,3 @@
-import 'package:e_commerce/core/theme/app_text_style.dart';
-import 'package:e_commerce/core/widgets/search_field.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/widgets/banners_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,25 +10,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = HomeCubit.get(context);
     return BlocBuilder<HomeCubit, HomeCubitState>(
       builder: (context, state) {
+        var cubit = HomeCubit.get(context);
         return Scaffold(
-          appBar: AppBar(
-            title: const Text(
-              'Salla',
-              style: AppTextStyle.font35BlackBold,
-            ),
-            actions: [
-              // Search Bar
-              SearchField(
-                searchController: cubit.searchController,
-                onSearchFieldPressed: () {},
-              )
-            ],
-            backgroundColor: Colors.white,
-            elevation: 0.0,
-          ),
           body: ListView(
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),

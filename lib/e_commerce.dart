@@ -12,7 +12,7 @@ class ECommerceApp extends StatelessWidget {
   const ECommerceApp({super.key});
 
   static final AppLanguage appLanguage = sl<AppLanguage>();
-  
+
   @override
   Widget build(BuildContext context) {
     String? token = sl<CacheHelper>().getString(key: CacheKeys.token);
@@ -20,9 +20,7 @@ class ECommerceApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: token != null
-          ? RouterHelper.homeScreen
-          : RouterHelper.onBoarding,
+      initialRoute: token != null ? RouterHelper.root : RouterHelper.onBoarding,
       routes: AppRouter.generateRoute,
       locale: appLanguage.appLocal,
       supportedLocales: LocalizeConstants.supportedLocales,

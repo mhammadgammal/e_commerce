@@ -12,5 +12,5 @@ abstract class AppNavigator {
       Navigator.pushNamed(context, RouterHelper.login);
 
   static void navigateAndFinishToHomeScreen(BuildContext context) =>
-      Navigator.popAndPushNamed(context, RouterHelper.homeScreen);
+      Navigator.popAndPushNamed(context, RouterHelper.home);
 }
