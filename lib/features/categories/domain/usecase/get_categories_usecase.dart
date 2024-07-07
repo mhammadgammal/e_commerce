@@ -6,7 +6,7 @@ class GetCategoriesUsecase implements BaseUsecase<List<CategoryModel>> {
   final CategoryRepositoryImpl _categoryRepository;
   GetCategoriesUsecase(this._categoryRepository);
   @override
-  Future<List<CategoryModel>> perform() async {
+  Future<List<CategoryModel>> perform(params) async {
     var categoriesRes = await _categoryRepository.getCategories();
     return categoriesRes.categories;
   }

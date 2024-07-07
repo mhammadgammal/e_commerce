@@ -7,11 +7,14 @@ class RecommendedProducts extends StatelessWidget {
       {super.key,
       required this.title,
       required this.products,
-      required this.onItemPressed});
+      required this.onItemPressed,
+      required this.onFavPressed});
 
   final String title;
   final List<ProductModel> products;
   final void Function(ProductModel) onItemPressed;
+  final void Function(int index, bool isFav) onFavPressed;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -72,7 +75,8 @@ class RecommendedProducts extends StatelessWidget {
                                           : Icons.favorite_border,
                                       color: Colors.black,
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () => onFavPressed(
+                                        index, products[index].isFavourite),
                                   ),
                                 ),
                               ),

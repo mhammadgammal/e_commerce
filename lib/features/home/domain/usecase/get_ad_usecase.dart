@@ -6,7 +6,7 @@ class GetAdUsecase implements BaseUsecase<String> {
   GetAdUsecase(this._productsRepository);
 
   @override
-  Future<String> perform() async {
+  Future<String> perform(params) async {
     var productsResponse = await _productsRepository.fetchProducts();
     return productsResponse.ad ?? '';
   }

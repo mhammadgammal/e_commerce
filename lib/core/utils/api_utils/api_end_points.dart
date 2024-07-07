@@ -3,7 +3,7 @@ class ApiEndPoints {
 
   static const String login = 'login';
   static const String register = 'register';
-  static const String products = 'home'; 
-  static const String categories = 'categories'; 
-  
+  static const String products = 'home';
+  static const String categories = 'categories';
+  static const favorite = 'favorites';
 }

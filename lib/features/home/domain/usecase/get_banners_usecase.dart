@@ -7,7 +7,7 @@ class GetBannersUsecase implements BaseUsecase<List<BannerModel>> {
   GetBannersUsecase(this._productsRepository);
 
   @override
-  Future<List<BannerModel>> perform() async {
+  Future<List<BannerModel>> perform(params) async {
     var productsRes = await _productsRepository.fetchProducts();
     return productsRes.banners;
   }

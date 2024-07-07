@@ -8,7 +8,7 @@ class GetProductsUsecase implements BaseUsecase<List<ProductModel>> {
   GetProductsUsecase(this._productsRepository);
 
   @override
-  Future<List<ProductModel>> perform() async {
+  Future<List<ProductModel>> perform(params) async {
     var productsRes = await _productsRepository.fetchProducts();
     return productsRes.products;
   }

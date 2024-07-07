@@ -29,15 +29,12 @@ class HomeScreen extends StatelessWidget {
                 title: 'Recommended For You',
                 products: cubit.products,
                 onItemPressed: (product) {},
+                onFavPressed: cubit.onFavPressed,
               ),
               const SizedBox(
                 height: 15.0,
               ),
-              RecommendedProducts(
-                title: 'Best Selling',
-                products: cubit.products,
-                onItemPressed: (product) {},
-              ),
+
             ],
           ),
         );

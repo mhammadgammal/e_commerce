@@ -16,7 +16,7 @@ class CategoriesCubit extends Cubit<CategoriesState> {
 
   Future<void> getCategories() async {
     emit(CategoriesLoadingState());
-    categories = await _categoriesUsecase.perform();
+    categories = await _categoriesUsecase.perform(null);
     print('categories in cubit $categories');
     emit(CategoriesLoadedSuccessfullyState());
   }

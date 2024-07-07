@@ -15,5 +15,16 @@ class ProductsRepositoryImpl implements ProductsRepository {
     return ProductsResponse.fromJson(productsResponse.data);
   }
 
-
+  @override
+  Future<(bool, String?)> changeFavourite(int id) async {
+    try {
+      var response = await _productsApiService.changeFavoriteStatus(id);
+      return (
+        response.data['status'] as bool,
+        response.data['message'] as String?
+      );
+    } catch (e) {
+      return (false, e.toString());
+    }
+  }
 }
