@@ -1,4 +1,7 @@
 import 'package:e_commerce/core/router/router_helper.dart';
+import 'package:e_commerce/features/categories/domain/usecase/get_categories_usecase.dart';
+import 'package:e_commerce/features/categories/presentation/cubit/categories_cubit.dart';
+import 'package:e_commerce/features/categories/presentation/screen/category_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,10 +30,6 @@ class _ScreenViewState extends State<ScreenView> {
           settings: settings,
           builder: (context) {
             switch (widget.routeName) {
-              case RouterHelper.categories:
-                return const Center(
-                  child: Text('Categories'),
-                );
               case RouterHelper.home:
                 return BlocProvider(
                   create: (context) => HomeCubit(
@@ -40,7 +39,12 @@ class _ScreenViewState extends State<ScreenView> {
                   )..fetch(),
                   child: const HomeScreen(),
                 );
-
+              case RouterHelper.categories:
+                return BlocProvider(
+                  create: (_) =>
+                      CategoriesCubit(GetCategoriesUsecase(sl.get()))..getCategories(),
+                  child: const CategoryScreen(),
+                );
               case RouterHelper.profile:
                 return const Center(
                   child: Text('Profile'),

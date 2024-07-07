@@ -4,9 +4,11 @@ import 'package:e_commerce/core/utils/api_utils/dio_helper.dart';
 import 'package:e_commerce/features/authentication/data/network/authentication_api_service.dart';
 import 'package:e_commerce/features/authentication/data/repositories/authentcation_repository_impl.dart';
 import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
+import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/categories/data/repositories/category_repository_impl.dart';
 import '../../features/home/data/network/products_api_service.dart';
 import '../../features/home/data/repositories/products_repository_impl.dart';
 import '../utils/localization/app_localization.dart';
@@ -62,6 +64,14 @@ Future<void> init() async {
       () => ProductsApiServiceImpl());
   sl.registerLazySingleton<ProductsRepositoryImpl>(
       () => ProductsRepositoryImpl(sl.get()));
-  
+
+  // #endregion
+
+  // #region Caategory
+  sl.registerLazySingleton<CategoriesApiServiceImpl>(
+      () => CategoriesApiServiceImpl());
+
+  sl.registerLazySingleton<CategoryRepositoryImpl>(
+      () => CategoryRepositoryImpl(sl.get()));
   // #endregion
 }

@@ -1,12 +1,13 @@
-import 'package:e_commerce/core/base_use_case/base_auth_usecase.dart';
-import 'package:e_commerce/features/authentication/domain/entity/register_params.dart';
-import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
+import 'package:e_commerce/core/base_use_case/base_usecase.dart';
+import 'package:e_commerce/features/categories/data/repositories/category_repository_impl.dart';
+import 'package:e_commerce/features/categories/domain/entity/category_entity/category_model.dart';
 
-class GetCategoriesUsecase implements BaseAuthUseCase{
+class GetCategoriesUsecase implements BaseUsecase<List<CategoryModel>> {
+  final CategoryRepositoryImpl _categoryRepository;
+  GetCategoriesUsecase(this._categoryRepository);
   @override
-  Future<UserModel?> perform(RegisterParams params) {
-    // TODO: implement perform
-    throw UnimplementedError();
+  Future<List<CategoryModel>> perform() async {
+    var categoriesRes = await _categoryRepository.getCategories();
+    return categoriesRes.categories;
   }
-  
 }
