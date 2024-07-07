@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/authentication/domain/usecase/login_usecase.dart';
 import '../../features/authentication/domain/usecase/register_usecase.dart';
+import '../../features/categories/presentation/screen/category_details.dart';
 import '../di/di.dart';
 
 class AppRouter {
@@ -32,5 +33,6 @@ class AppRouter {
           ),
           child: const LoginScreen(),
         ),
+    RouterHelper.categoriesDetail: (_) => const CategoryDetailsScreen(),
   };
 }

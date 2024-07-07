@@ -11,5 +11,7 @@ abstract class RouterHelper {
 
   static const cart = '/cart';
 
+  static const categoriesDetail = '/categoriesDetail';
+
 
 }

@@ -1,5 +1,4 @@
 import 'package:e_commerce/core/app/cubit/app_cubit.dart';
-import 'package:e_commerce/core/app/screen_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -55,9 +54,7 @@ class AppLayout extends StatelessWidget {
               ),
             ),
           ),
-          body: ScreenView(
-            cubit.screens[cubit.currentIndex].$3,
-          ),
+          body: cubit.screens[cubit.currentIndex].$3,
         );
       },
     );

@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/router/router_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,6 +23,12 @@ class CategoryScreen extends StatelessWidget {
                         fit: BoxFit.cover, width: 50, height: 50),
                     title: Text(cubit.categories[index].name),
                     trailing: const Icon(Icons.arrow_forward_ios),
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RouterHelper.login,
+                      );
+                    },
                   ),
                 ));
       },
