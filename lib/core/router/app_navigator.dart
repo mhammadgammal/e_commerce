@@ -13,4 +13,8 @@ abstract class AppNavigator {
 
   static void navigateAndFinishToHomeScreen(BuildContext context) =>
       Navigator.popAndPushNamed(context, RouterHelper.home);
+
+  static void navigateToCategoryDetails(context, int categoryId) => 
+  Navigator.pushNamed(context, RouterHelper.categoriesDetail, arguments: categoryId);
+
 }

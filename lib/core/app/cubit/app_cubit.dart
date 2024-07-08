@@ -5,7 +5,7 @@ import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/categories/domain/usecase/get_categories_usecase.dart';
-import '../../../features/categories/presentation/cubit/categories_cubit.dart';
+import '../../../features/categories/presentation/cubit/category_cubit/categories_cubit.dart';
 import '../../../features/categories/presentation/screen/category_screen.dart';
 import '../../../features/home/domain/usecase/get_ad_usecase.dart';
 import '../../../features/home/domain/usecase/get_banners_usecase.dart';
@@ -44,8 +44,9 @@ class AppCubit extends Cubit<AppState> {
       Image.asset(AppImages.categoriesIc, width: 30.0, height: 30.0),
       'Categories',
       BlocProvider(
-        create: (_) =>
-            CategoriesCubit(GetCategoriesUsecase(sl.get()))..getCategories(),
+        create: (_) => CategoriesCubit(
+          GetCategoriesUsecase(sl.get()),
+        )..getCategories(),
         child: const CategoryScreen(),
       )
     ),

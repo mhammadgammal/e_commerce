@@ -6,9 +6,10 @@ import 'package:e_commerce/features/authentication/presentation/screens/register
 import 'package:e_commerce/features/authentication/presentation/view_model/login_cubit/login_cubit_cubit.dart';
 import 'package:e_commerce/features/authentication/presentation/view_model/register_cubit/register_cubit_bloc.dart';
 import 'package:e_commerce/features/boarding/boarding_screen.dart';
+import 'package:e_commerce/features/categories/domain/usecase/get_category_products.dart';
+import 'package:e_commerce/features/categories/presentation/cubit/category_product_cubit/category_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/authentication/domain/usecase/login_usecase.dart';
 import '../../features/authentication/domain/usecase/register_usecase.dart';
 import '../../features/categories/presentation/screen/category_details.dart';
@@ -33,6 +34,14 @@ class AppRouter {
           ),
           child: const LoginScreen(),
         ),
-    RouterHelper.categoriesDetail: (_) => const CategoryDetailsScreen(),
+    RouterHelper.categoriesDetail: (context) {
+      final categoryId = ModalRoute.of(context)!.settings.arguments as int;
+      return BlocProvider(
+        create: (context) =>
+            CategoryProductCubit(GetCategoryProductsUsecase(sl.get()))
+              ..getCategoryProducts(categoryId),
+        child: const CategoryDetailsScreen(),
+      );
+    },
   };
 }
