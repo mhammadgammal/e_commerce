@@ -7,7 +7,7 @@ abstract final class AppTheme {
     useMaterial3: true,
     scaffoldBackgroundColor: Colors.white,
     iconTheme: const IconThemeData(
-      color: Colors.white,
+      color: Colors.black,
     ),
     iconButtonTheme: const IconButtonThemeData(
       style:
@@ -27,8 +27,9 @@ abstract final class AppTheme {
       iconColor: AppColors.complementaryColor2,
     ),
     appBarTheme: const AppBarTheme(
-      iconTheme: IconThemeData(color: AppColors.primaryColor),
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Colors.white,
+      scrolledUnderElevation: 0.0,
+      elevation: 0.0,
     ),
     drawerTheme: const DrawerThemeData(
       backgroundColor: AppColors.darkShade1,

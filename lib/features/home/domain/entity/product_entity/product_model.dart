@@ -17,6 +17,7 @@ class ProductModel {
       required this.image,
       this.isFavourite = false,
       this.isCart = false});
+
   factory ProductModel.fromJson(Map<String, dynamic> productsResponse) =>
       ProductModel(
           id: productsResponse['id'].toString(),
@@ -25,6 +26,6 @@ class ProductModel {
           discountPercentage: productsResponse['discount'].toString(),
           title: productsResponse['name'],
           image: productsResponse['image'],
-          isFavourite: productsResponse['in_favorites'],
-          isCart: productsResponse['in_cart']);
+          isFavourite: productsResponse['in_favorites'] ?? true,
+          isCart: productsResponse['in_cart']?? false);
 }

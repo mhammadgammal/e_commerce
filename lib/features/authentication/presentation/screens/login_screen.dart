@@ -15,7 +15,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubitCubit, LoginCubitState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is LoginSuccessState) {
+          AppNavigator.navigateTtoToLayout(context);
+        }
+      },
       builder: (context, state) {
         var cubit = LoginCubitCubit.get(context);
         return Scaffold(

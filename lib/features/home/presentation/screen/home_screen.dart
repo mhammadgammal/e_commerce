@@ -1,8 +1,11 @@
+import 'package:e_commerce/core/router/app_navigator.dart';
+import 'package:e_commerce/core/widgets/search_field.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/widgets/banners_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/theme/app_text_style.dart';
 import '../widgets/recommended_products_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,6 +17,26 @@ class HomeScreen extends StatelessWidget {
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
         return Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'Salla',
+              style: AppTextStyle.font35BlackBold,
+            ),
+            actions: [
+              // Search Bar
+              SearchField(
+                searchWidth: 230.0,
+                searchController: TextEditingController(),
+                onSearchFieldPressed: () {},
+              ),
+              IconButton(
+                  onPressed: () => AppNavigator.navigateToFavorite(context),
+                  icon: const Icon(
+                    Icons.favorite_border,
+                    color: Colors.black,
+                  )),
+            ],
+          ),
           body: ListView(
             shrinkWrap: true,
             physics: const ClampingScrollPhysics(),
@@ -34,7 +57,6 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-
             ],
           ),
         );

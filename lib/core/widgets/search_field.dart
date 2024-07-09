@@ -5,11 +5,13 @@ import '../theme/app_color.dart';
 class SearchField extends StatelessWidget {
   const SearchField(
       {super.key,
+      this.searchWidth = 258.0,
       required this.searchController,
       required this.onSearchFieldPressed});
 
   final TextEditingController searchController;
   final void Function() onSearchFieldPressed;
+  final double searchWidth;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class SearchField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(right: 16.0),
         child: SizedBox(
-            width: 258.0,
+            width: searchWidth,
             height: 40.0,
             child: TextField(
               controller: searchController,

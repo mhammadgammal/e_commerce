@@ -13,5 +13,7 @@ abstract class RouterHelper {
 
   static const categoriesDetail = '/categoriesDetail';
 
+  static const favorite = '/favorite';
+
 
 }
