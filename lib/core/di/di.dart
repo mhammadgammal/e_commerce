@@ -5,6 +5,8 @@ import 'package:e_commerce/features/authentication/data/network/authentication_a
 import 'package:e_commerce/features/authentication/data/repositories/authentcation_repository_impl.dart';
 import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
 import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
+import 'package:e_commerce/features/favorite/data/network/favorite_api_service.dart';
+import 'package:e_commerce/features/favorite/data/repository/favorite_repository_impl.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -67,11 +69,17 @@ Future<void> init() async {
 
   // #endregion
 
-  // #region Caategory
+  // #region Category
   sl.registerLazySingleton<CategoriesApiServiceImpl>(
       () => CategoriesApiServiceImpl());
 
   sl.registerLazySingleton<CategoryRepositoryImpl>(
       () => CategoryRepositoryImpl(sl.get()));
+  // #endregion
+
+  // #region favorites
+  sl.registerLazySingleton<FavoriteApiService>(() => FavoriteApiService());
+  sl.registerLazySingleton<FavoriteRepositoryImpl>(
+      () => FavoriteRepositoryImpl(sl.get()));
   // #endregion
 }
