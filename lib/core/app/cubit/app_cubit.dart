@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/theme/app_images.dart';
 import 'package:e_commerce/features/categories/presentation/navigation/category_products_navigation.dart';
-import 'package:e_commerce/features/home/domain/usecase/change_favorite_usecase.dart';
+import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';

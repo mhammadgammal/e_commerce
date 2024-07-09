@@ -1,5 +1,5 @@
 import 'package:e_commerce/features/categories/domain/entity/category_entity/category_model.dart';
-import 'package:e_commerce/features/home/domain/usecase/change_favorite_usecase.dart';
+import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_ad_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_banners_usecase.dart';
 import 'package:e_commerce/features/home/domain/usecase/get_products_usecase.dart';
