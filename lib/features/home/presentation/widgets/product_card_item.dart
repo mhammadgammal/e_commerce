@@ -98,8 +98,8 @@ class ProductCardItem extends StatelessWidget {
                 height: 5.0,
               ),
               SizedBox(
-                height: 35.0,
                 width: 171.6,
+                height: 35.0,
                 child: Text(
                   product.title,
                   textAlign: TextAlign.start,
