@@ -16,7 +16,6 @@ class CartApiServiceImpl implements CartApiServiceInterface {
       sl<DioHelper>().get(url: ApiEndPoints.cart);
 
   @override
-  Future<Response> toggleCartItem(int productItem) {
-    throw UnimplementedError();
-  }
+  Future<Response> toggleCartItem(int productItem) => sl<DioHelper>()
+      .post(url: ApiEndPoints.cart, data: {'product_id': productItem});
 }

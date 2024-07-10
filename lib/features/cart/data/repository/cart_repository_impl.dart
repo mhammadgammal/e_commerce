@@ -15,7 +15,20 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future toggleCartItem(int productId) {
-    throw UnimplementedError();
+  Future<(bool, String?)> toggleCartItem(int productId) async {
+    try {
+      var response = await _apiServiceImpl.toggleCartItem(productId);
+      print('toggleCartItem: ${response.data}');
+      return (
+      response.data['status'] as bool,
+      response.data['message'] as String?
+      );
+    } catch (e) {
+      print(e.toString());
+      return (
+      false,
+      e.toString(),
+      );
+    }
   }
 }

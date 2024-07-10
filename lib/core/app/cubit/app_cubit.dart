@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/theme/app_images.dart';
 import 'package:e_commerce/features/cart/domain/usecase/get_cart_items_usecase.dart';
+import 'package:e_commerce/features/cart/domain/usecase/toggle_cart_item_usecase.dart';
 import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/screens/cart_screen.dart';
 import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
@@ -76,7 +77,10 @@ class AppCubit extends Cubit<AppState> {
       'Cart',
       BlocProvider(
         create: (context) => CartCubit(
-          GetCartItemsUsecase(sl.get()),
+          GetCartItemsUsecase(
+            sl.get(),
+          ),
+          ToggleCartItemUsecase(sl.get()),
         )..fetchCartItems(),
         child: const CartScreen(),
       )
