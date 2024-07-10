@@ -8,6 +8,7 @@ import 'package:e_commerce/features/authentication/presentation/view_model/regis
 import 'package:e_commerce/features/boarding/boarding_screen.dart';
 import 'package:e_commerce/features/categories/domain/usecase/get_category_products.dart';
 import 'package:e_commerce/features/categories/presentation/cubit/category_product_cubit/category_product_cubit.dart';
+import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/favorite/domain/usecase/get_favorite_products.dart';
 import 'package:e_commerce/features/favorite/presentation/cubit/favorite_products_cubit.dart';
 import 'package:e_commerce/features/favorite/presentation/screen/favorite_products_screen.dart';
@@ -47,9 +48,10 @@ class AppRouter {
       );
     },
     RouterHelper.favorite: (_) => BlocProvider(
-          create: (context) =>
-              FavoriteProductsCubit(GetFavoriteProductsUseCase(sl.get()))
-                ..getFavoriteProducts(),
+          create: (context) => FavoriteProductsCubit(
+              GetFavoriteProductsUseCase(sl.get()),
+              ChangeFavoriteUsecase(sl.get()))
+            ..getFavoriteProducts(),
           child: const FavoriteProductsScreen(),
         )
   };

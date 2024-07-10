@@ -8,3 +8,5 @@ final class FavoriteProductsInitial extends FavoriteProductsState {}
 final class FavoriteProductsLoadingState extends FavoriteProductsState {}
 
 final class FavoriteProductsLoadedSuccessState extends FavoriteProductsState {}
+final class FavoriteProductRemovedRemotelySuccessState extends FavoriteProductsState {}
+final class FavoriteProductRemovedRemotelyFailureState extends FavoriteProductsState {}

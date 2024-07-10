@@ -21,6 +21,6 @@ abstract class AppNavigator {
       Navigator.pushNamed(context, RouterHelper.categoriesDetail,
           arguments: categoryId);
 
-  static void navigateToFavorite(BuildContext context) =>
+  static Future<dynamic> navigateToFavorite(BuildContext context) =>
       Navigator.pushNamed(context, RouterHelper.favorite);
 }
