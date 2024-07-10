@@ -82,4 +82,20 @@ class HomeCubit extends Cubit<HomeCubitState> {
       emit(FavRemotlyToggledFailedState(messsage!));  
     }
   }
+
+  void removeFavProductLocally(int productId) {
+    var product = products.where((product) => product.id == productId.toString()).first;
+    product.isFavourite = false;
+    emit(FavoriteProductRemovedLocally());
+  }
+
+  Future<int> countFavProducts() async{
+   int count = 0;
+   for(var product in products){
+     if (product.isFavourite){
+       count++;
+     }
+   }
+   return count;
+  }
 }

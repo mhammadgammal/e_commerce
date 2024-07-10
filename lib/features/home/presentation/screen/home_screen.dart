@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/router/app_navigator.dart';
+import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/widgets/search_field.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/widgets/banners_widget.dart';
@@ -13,7 +14,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeCubitState>(
+    int counter = 0;
+    return BlocConsumer<HomeCubit, HomeCubitState>(
+      listener: (context, state) {
+        if (state is RecommendedProductsLoadedSuccessfullyState) {
+          HomeCubit.get(context).countFavProducts().then((value) {
+            counter = value;
+          });
+        }
+      },
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
         return Scaffold(
@@ -30,11 +39,34 @@ class HomeScreen extends StatelessWidget {
                 onSearchFieldPressed: () {},
               ),
               IconButton(
-                  onPressed: () => AppNavigator.navigateToFavorite(context),
-                  icon: const Icon(
-                    Icons.favorite_border,
-                    color: Colors.black,
-                  )),
+                onPressed: () =>
+                    AppNavigator.navigateToFavorite(context).then((value) {
+                  if (value is int && value != -1) {
+                    cubit.removeFavProductLocally(value);
+                  }
+                }),
+                icon: Stack(
+                  alignment: AlignmentDirectional.topEnd,
+                  children: [
+                    const Icon(
+                      Icons.favorite_border,
+                      size: 33.0,
+                      color: Colors.black,
+                    ),
+                    Visibility(
+                      visible: counter > 0,
+                      child: CircleAvatar(
+                        radius: 10.0,
+                        backgroundColor: AppColors.primaryColor,
+                        child: Text(
+                          counter.toString(),
+                          style: TextStyle(color: Colors.white, fontSize: 12.0),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
           body: ListView(

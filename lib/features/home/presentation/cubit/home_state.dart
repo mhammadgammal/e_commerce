@@ -17,10 +17,13 @@ final class FavRemotlyToggledState extends HomeCubitState {}
 
 final class AdLoadedSuccessfullyState extends HomeCubitState {}
 
+final class FavoriteProductRemovedLocally extends HomeCubitState {}
+
 final class BannersLoadedSuccessfullyState extends HomeCubitState {}
 
 final class FavRemotlyToggledFailedState extends HomeCubitState {
   final String message;
+
   FavRemotlyToggledFailedState(this.message);
 }
 
