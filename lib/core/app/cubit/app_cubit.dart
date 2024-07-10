@@ -1,4 +1,7 @@
 import 'package:e_commerce/core/theme/app_images.dart';
+import 'package:e_commerce/features/cart/domain/usecase/get_cart_items_usecase.dart';
+import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:e_commerce/features/cart/presentation/screens/cart_screen.dart';
 import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
@@ -23,6 +26,7 @@ class AppCubit extends Cubit<AppState> {
 
   int currentIndex = 0;
   int _lastIndex = 0;
+
   // final List<GlobalKey<NavigatorState>> _navigatorKeys = [
   //   categoryProductNavigatorKey,
   // ];
@@ -70,8 +74,11 @@ class AppCubit extends Cubit<AppState> {
         size: 30,
       ),
       'Cart',
-      const Center(
-        child: Text('Profile'),
+      BlocProvider(
+        create: (context) => CartCubit(
+          GetCartItemsUsecase(sl.get()),
+        )..fetchCartItems(),
+        child: const CartScreen(),
       )
     ),
   ];

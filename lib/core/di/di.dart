@@ -4,6 +4,8 @@ import 'package:e_commerce/core/utils/api_utils/dio_helper.dart';
 import 'package:e_commerce/features/authentication/data/network/authentication_api_service.dart';
 import 'package:e_commerce/features/authentication/data/repositories/authentcation_repository_impl.dart';
 import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
+import 'package:e_commerce/features/cart/data/network/cart_api_service.dart';
+import 'package:e_commerce/features/cart/data/repository/cart_repository_impl.dart';
 import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
 import 'package:e_commerce/features/favorite/data/network/favorite_api_service.dart';
 import 'package:e_commerce/features/favorite/data/repository/favorite_repository_impl.dart';
@@ -81,5 +83,11 @@ Future<void> init() async {
   sl.registerLazySingleton<FavoriteApiService>(() => FavoriteApiService());
   sl.registerLazySingleton<FavoriteRepositoryImpl>(
       () => FavoriteRepositoryImpl(sl.get()));
+  // #endregion
+
+  // #region cart
+  sl.registerLazySingleton<CartApiServiceImpl>(() => CartApiServiceImpl());
+  sl.registerLazySingleton<CartRepositoryImpl>(
+      () => CartRepositoryImpl(sl.get()));
   // #endregion
 }

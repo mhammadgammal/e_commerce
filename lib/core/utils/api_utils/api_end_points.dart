@@ -6,4 +6,5 @@ class ApiEndPoints {
   static const String products = 'home';
   static const String categories = 'categories';
   static const favorite = 'favorites';
+  static const cart = 'carts';
 }
