@@ -4,14 +4,13 @@ import 'package:e_commerce/features/authentication/domain/entity/register_params
 import 'package:e_commerce/features/authentication/domain/usecase/login_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 import '../../../../../core/di/di.dart';
 
 part 'login_cubit_state.dart';
 
 class LoginCubitCubit extends Cubit<LoginCubitState> {
-  LoginUsecase _loginUsecase;
+  final LoginUsecase _loginUsecase;
 
   LoginCubitCubit(
     this._loginUsecase,

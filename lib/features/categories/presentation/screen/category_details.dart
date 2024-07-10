@@ -31,7 +31,7 @@ class CategoryDetailsScreen extends StatelessWidget {
               bottom: PreferredSize(
                 preferredSize: const Size.fromHeight(40.0),
                 child: Container(
-                  padding: EdgeInsetsDirectional.only(start: 10.0),
+                  padding: const EdgeInsetsDirectional.only(start: 10.0),
                   width: double.infinity,
                   child: SearchField(
                     searchController: TextEditingController(),

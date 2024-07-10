@@ -10,7 +10,7 @@ class BlueBorderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsetsDirectional.all(3.0),
+      padding: const EdgeInsetsDirectional.all(3.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.0),
         border: Border.all(

@@ -1,10 +1,8 @@
 import 'package:e_commerce/core/theme/app_images.dart';
-import 'package:e_commerce/features/categories/presentation/navigation/category_products_navigation.dart';
 import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/categories/domain/usecase/get_categories_usecase.dart';
 import '../../../features/categories/presentation/cubit/category_cubit/categories_cubit.dart';
@@ -25,9 +23,9 @@ class AppCubit extends Cubit<AppState> {
 
   int currentIndex = 0;
   int _lastIndex = 0;
-  final List<GlobalKey<NavigatorState>> _navigatorKeys = [
-    categoryProductNavigatorKey,
-  ];
+  // final List<GlobalKey<NavigatorState>> _navigatorKeys = [
+  //   categoryProductNavigatorKey,
+  // ];
 
   List<(Widget, String, Widget)> screens = [
     (

@@ -32,7 +32,7 @@ class FixedHeaderDataTableWidget extends StatelessWidget {
                   contentCellHeight: 50.0,
                   stickyLegendWidth: 50.0,
                   stickyLegendHeight: 50.0),
-              cellAlignments: CellAlignments.uniform(Alignment.center),
+              cellAlignments: const CellAlignments.uniform(Alignment.center),
               columnsTitleBuilder: (columnIndex) => Text(columns[columnIndex],
                   maxLines: 1, overflow: TextOverflow.ellipsis),
               contentCellBuilder: (columnIndex, rowIndex) =>

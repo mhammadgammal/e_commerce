@@ -82,8 +82,8 @@ class FavoriteProductCardItem extends StatelessWidget {
             ),
             Row(
               children: [
-                BlueBorderWidget(
-                  borderChild: const Text(
+                const BlueBorderWidget(
+                  borderChild: Text(
                     'View Options',
                     style: TextStyle(color: AppColors.primaryColor),
                   ),
@@ -95,7 +95,7 @@ class FavoriteProductCardItem extends StatelessWidget {
                   borderChild: GestureDetector(
                     onTap: () =>
                         showBottomSheet(context, int.parse(favProduct.id)),
-                    child: Icon(
+                    child: const Icon(
                       Icons.more_horiz_outlined,
                       size: 20.0,
                       color: AppColors.primaryColor,

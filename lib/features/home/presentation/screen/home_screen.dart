@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                         backgroundColor: AppColors.primaryColor,
                         child: Text(
                           counter.toString(),
-                          style: TextStyle(color: Colors.white, fontSize: 12.0),
+                          style: const TextStyle(color: Colors.white, fontSize: 12.0),
                         ),
                       ),
                     )
