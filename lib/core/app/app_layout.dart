@@ -2,8 +2,6 @@ import 'package:e_commerce/core/app/cubit/app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../theme/app_text_style.dart';
-import '../widgets/search_field.dart';
 
 class AppLayout extends StatefulWidget {
   const AppLayout({super.key});
@@ -16,20 +14,27 @@ class _AppLayoutState extends State<AppLayout> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {
-
-      },
+      listener: (context, state) {},
       builder: (context, state) {
-        bool isPopping = false;
-
         final cubit = AppCubit.get(context);
         return Scaffold(
-          bottomNavigationBar: NavigationBar(
-            selectedIndex: cubit.currentIndex,
-            onDestinationSelected: cubit.changeIndex,
-            destinations: List.generate(
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: cubit.currentIndex,
+            onTap: cubit.changeIndex,
+            fixedColor: Colors.black,
+            type: BottomNavigationBarType.fixed,
+            enableFeedback: false,
+            backgroundColor: Colors.white,
+            elevation: 0.0,
+            unselectedLabelStyle:
+                const TextStyle(color: Colors.black, fontSize: 15.0),
+            selectedLabelStyle: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0),
+            items: List.generate(
               cubit.screens.length,
-              (index) => NavigationDestination(
+              (index) => BottomNavigationBarItem(
                   icon: cubit.screens[index].$1,
                   label: cubit.screens[index].$2),
             ),
