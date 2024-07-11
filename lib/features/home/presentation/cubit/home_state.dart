@@ -28,3 +28,13 @@ final class FavRemotlyToggledFailedState extends HomeCubitState {
 }
 
 final class RecommendedProductsLoadedSuccessfullyState extends HomeCubitState {}
+
+final class CartItemToggleLocallyState extends HomeCubitState {}
+
+final class CartItemToggledRemotelySuccessState extends HomeCubitState {}
+
+final class CartItemToggledRemotelyFailureState extends HomeCubitState {
+  final String errorMessage;
+
+  CartItemToggledRemotelyFailureState(this.errorMessage);
+}

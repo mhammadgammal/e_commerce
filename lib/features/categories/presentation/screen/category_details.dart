@@ -58,6 +58,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                       product: cubit.categoryProducts[index],
                       onItemPressed: (product) {},
                       onFavPressed: (index, isFavorite) {},
+                      onCartPressed: (_, __){},
                     ),
               ),
             ),

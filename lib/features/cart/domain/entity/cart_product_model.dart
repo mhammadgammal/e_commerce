@@ -11,9 +11,12 @@ class CartProductModel {
     required this.product,
   });
 
-  factory CartProductModel.fromJson(Map<String, dynamic> productResponse) =>
-      CartProductModel(
+  factory CartProductModel.fromJson(Map<String, dynamic> productResponse) {
+    print('Extracting data in CartProductModel');
+
+    return CartProductModel(
           id: productResponse['id'],
           quantity: productResponse['quantity'],
           product: ProductModel.fromJson(productResponse['product']));
+  }
 }

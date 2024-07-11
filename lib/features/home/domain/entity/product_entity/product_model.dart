@@ -24,7 +24,7 @@ class ProductModel {
           price: productsResponse['price'].toString(),
           oldPrice: productsResponse['old_price'].toString(),
           discountPercentage: productsResponse['discount'].toString(),
-          title: productsResponse['name'],
+          title: productsResponse['name']??'',
           image: productsResponse['image'],
           isFavourite: productsResponse['in_favorites'] ?? true,
           isCart: productsResponse['in_cart']?? false);

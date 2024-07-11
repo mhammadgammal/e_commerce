@@ -86,6 +86,7 @@ class HomeScreen extends StatelessWidget {
                 products: cubit.products,
                 onItemPressed: (product) {},
                 onFavPressed: cubit.onFavPressed,
+                onCartPressed: cubit.onCartPressed,
               ),
               const SizedBox(
                 height: 15.0,

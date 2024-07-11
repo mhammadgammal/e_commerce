@@ -1,5 +1,5 @@
 abstract class RouterHelper {
-  static const root = '/';
+  static const root = '/appLayout';
   static const onBoarding = '/onBoarding';
   static const login = '/login';
   static const register = '/register';

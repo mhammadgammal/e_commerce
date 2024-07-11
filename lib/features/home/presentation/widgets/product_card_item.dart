@@ -1,5 +1,7 @@
+import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/app_text_style.dart';
 
@@ -9,14 +11,19 @@ class ProductCardItem extends StatelessWidget {
       required this.index,
       required this.product,
       required this.onItemPressed,
-      required this.onFavPressed});
+      required this.onFavPressed,
+      required this.onCartPressed});
 
   final int index;
   final ProductModel product;
+
   //void Function(ProductModel p1)
   final Function(ProductModel) onItemPressed;
+
   //void Function(int index, bool isFav)
   final Function(int, bool) onFavPressed;
+
+  final Function(int, bool) onCartPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -81,14 +88,17 @@ class ProductCardItem extends StatelessWidget {
                           ),
                         ),
                         child: IconButton(
-                          icon: Icon(
-                            product.isCart
-                                ? Icons.shopping_cart_rounded
-                                : Icons.shopping_cart_outlined,
-                            color: Colors.black,
-                          ),
-                          onPressed: () {},
-                        ),
+                            icon: Icon(
+                              product.isCart
+                                  ? Icons.shopping_cart_rounded
+                                  : Icons.shopping_cart_outlined,
+                              color: Colors.black,
+                            ),
+                            onPressed: () {
+                              onCartPressed(index, product.isCart);
+                              // context.read<CartCubit>().fetchCartItems();
+                              // with extensions
+                            }),
                       ),
                     ),
                   )

@@ -20,7 +20,7 @@ import '../utils/localization/app_localization.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  print('Service Locatior is running');
+  print('Service Locator is running');
   // #region Localization
   sl.registerLazySingleton<AppLanguage>(() => AppLanguage());
 

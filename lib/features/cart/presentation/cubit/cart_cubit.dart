@@ -1,8 +1,7 @@
-import 'package:bloc/bloc.dart';
+import 'package:e_commerce/core/notifiers/notifiers.dart';
 import 'package:e_commerce/features/cart/domain/entity/cart_product_model.dart';
 import 'package:e_commerce/features/cart/domain/usecase/get_cart_items_usecase.dart';
 import 'package:e_commerce/features/cart/domain/usecase/toggle_cart_item_usecase.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -18,14 +17,16 @@ class CartCubit extends Cubit<CartState> {
   CartCubit(this._cartItemsUsecase, this._toggleCartItemUsecase)
       : super(CartInitial());
 
-  static CartCubit get(BuildContext context) => BlocProvider.of(context);
-  List<CartProductModel> cartItems = [];
+  static CartCubit get(context) => BlocProvider.of(context);
+  // List<CartProductModel> cartItems = [];
 
   Future<void> fetchCartItems() async {
     emit(CartItemsLoadingState());
     try {
-      cartItems = await _cartItemsUsecase.perform(null);
+      cartItemsNotifier.value = await _cartItemsUsecase.perform(null);
       emit(CartItemsLoadSuccessState());
+      cartItemsCounter.value = cartItemsNotifier.value.length;
+      print('CartCubit ==> cart items count: ${cartItemsCounter.value}');
     } catch (e) {
       print(e);
       emit(CartItemsLoadFailureState());
@@ -40,7 +41,7 @@ class CartCubit extends Cubit<CartState> {
 
   void selectQuantityFromExpanded(int index, int productIndex) {
     selectedQuantityIndex = index;
-    cartItems[productIndex].quantity = index + 1;
+    cartItemsNotifier.value[productIndex].quantity = index + 1;
     emit(SelectQuantityFromExpandedState());
   }
 
@@ -48,11 +49,12 @@ class CartCubit extends Cubit<CartState> {
     try {
       bool isCartItem = true;
       String? message;
-      (isCartItem, message) =
+      CartProductModel? cartProductItem;
+      (isCartItem, message, cartProductItem) =
           await _toggleCartItemUsecase.perform(int.parse(id));
       print('cart cubit: $isCartItem');
       print('cart cubit: $message');
-      cartItems.removeWhere((product) => product.product.id == id);
+      cartItemsNotifier.value.removeWhere((product) => product.product.id == id);
       emit(CartItemRemovedSuccessState(
         int.parse(id),
       ));

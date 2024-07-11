@@ -9,12 +9,13 @@ class RecommendedProducts extends StatelessWidget {
       required this.title,
       required this.products,
       required this.onItemPressed,
-      required this.onFavPressed});
+      required this.onFavPressed,required this.onCartPressed});
 
   final String title;
   final List<ProductModel> products;
   final void Function(ProductModel) onItemPressed;
   final void Function(int index, bool isFav) onFavPressed;
+  final void Function(int, bool) onCartPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class RecommendedProducts extends StatelessWidget {
                   product: products[index],
                   onItemPressed: onItemPressed,
                   onFavPressed: onFavPressed,
+                  onCartPressed: onCartPressed,
                 );
               },
             ),

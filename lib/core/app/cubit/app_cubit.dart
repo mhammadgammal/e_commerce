@@ -39,13 +39,25 @@ class AppCubit extends Cubit<AppState> {
         size: 30,
       ),
       'Home',
-      BlocProvider(
-        create: (context) => HomeCubit(
-          ChangeFavoriteUsecase(sl.get()),
-          GetProductsUsecase(sl.get()),
-          GetBannersUsecase(sl.get()),
-          GetAdUsecase(sl.get()),
-        )..fetch(),
+      MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) => HomeCubit(
+                    ChangeFavoriteUsecase(sl.get()),
+                    GetProductsUsecase(sl.get()),
+                    ToggleCartItemUsecase(sl.get()),
+                    GetBannersUsecase(sl.get()),
+                    GetAdUsecase(sl.get()),
+                  )..fetch()),
+          BlocProvider(
+            create: (context) => CartCubit(
+              GetCartItemsUsecase(
+                sl.get(),
+              ),
+              ToggleCartItemUsecase(sl.get()),
+            )..fetchCartItems(),
+          )
+        ],
         child: const HomeScreen(),
       )
     ),
