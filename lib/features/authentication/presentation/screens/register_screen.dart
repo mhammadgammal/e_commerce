@@ -4,6 +4,7 @@ import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/core/widgets/default_form_field.dart';
 import 'package:e_commerce/features/authentication/presentation/widgets/authentication_btn.dart';
 import 'package:e_commerce/features/authentication/presentation/widgets/continue_with_google.dart';
+import 'package:e_commerce/features/authentication/presentation/widgets/custom_dashed_line.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../view_model/register_cubit/register_cubit_bloc.dart';
@@ -127,44 +128,26 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      Row(
+                                            const Row(
                         children: [
                           Expanded(
-                            child: Container(
-                              // width: MediaQuery.of(context).size.width * 0.4,
-                              margin: const EdgeInsetsDirectional.only(
-                                start: 5.0,
-                                end: 5.0,
-                              ),
-                              height: 8.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5.0),
-                                ),
-                              ),
+                              child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: CustomDashedLine(
+                              color: Colors.blueGrey,
                             ),
-                          ),
-                          const Text(
-                            'OR',
+                          )),
+                          Text(
+                            ' OR ',
                             style: AppTextStyle.font17BlackNormal,
                           ),
                           Expanded(
-                            child: Container(
-                              // width: MediaQuery.of(context).size.width * 0.4,
-                              margin: const EdgeInsetsDirectional.only(
-                                start: 5.0,
-                                end: 5.0,
-                              ),
-                              height: 8.0,
-                              decoration: const BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(5.0),
-                                ),
-                              ),
+                              child: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: CustomDashedLine(
+                              color: Colors.blueGrey,
                             ),
-                          ),
+                          )),
                         ],
                       ),
                       const SizedBox(
