@@ -3,6 +3,7 @@ import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/widgets/search_field.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/widgets/banners_widget.dart';
+import 'package:e_commerce/features/home/presentation/widgets/network_image_with_rounded_corner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -80,6 +81,14 @@ class HomeScreen extends StatelessWidget {
               BannersWidget(banners: cubit.banners),
               const SizedBox(
                 height: 15.0,
+              ),
+              Container(
+                width: double.infinity,
+                height: 200.0,
+                child: Visibility(
+                  visible: cubit.ads.isNotEmpty,
+                  child: NetworkImageWithRoundedCorner(imageUrl: cubit.ads),
+                ),
               ),
               RecommendedProducts(
                 title: 'Recommended For You',
