@@ -3,3 +3,4 @@ import 'package:flutter/material.dart';
 
 ValueNotifier<int> cartItemsCounter = ValueNotifier(0);
 ValueNotifier<List<CartProductModel>> cartItemsNotifier = ValueNotifier([]);
+ValueNotifier<Map<String, bool>> cartItemsId = ValueNotifier({});

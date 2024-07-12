@@ -18,6 +18,7 @@ class CartCubit extends Cubit<CartState> {
       : super(CartInitial());
 
   static CartCubit get(context) => BlocProvider.of(context);
+
   // List<CartProductModel> cartItems = [];
 
   Future<void> fetchCartItems() async {
@@ -54,7 +55,11 @@ class CartCubit extends Cubit<CartState> {
           await _toggleCartItemUsecase.perform(int.parse(id));
       print('cart cubit: $isCartItem');
       print('cart cubit: $message');
-      cartItemsNotifier.value.removeWhere((product) => product.product.id == id);
+      cartItemsCounter.value--;
+      cartItemsNotifier.value = List.from(cartItemsNotifier.value)
+        ..removeWhere((product) => product.product.id == id);
+      cartItemsId.value = {...cartItemsId.value}
+        ..remove(cartProductItem?.product.id);
       emit(CartItemRemovedSuccessState(
         int.parse(id),
       ));

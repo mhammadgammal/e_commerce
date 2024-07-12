@@ -1,7 +1,6 @@
-import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:e_commerce/core/notifiers/notifiers.dart';
 import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/app_text_style.dart';
 
@@ -87,17 +86,19 @@ class ProductCardItem extends StatelessWidget {
                             10.0,
                           ),
                         ),
-                        child: IconButton(
-                            icon: Icon(
-                              product.isCart
-                                  ? Icons.shopping_cart_rounded
-                                  : Icons.shopping_cart_outlined,
-                              color: Colors.black,
-                            ),
-                            onPressed: () {
-                              onCartPressed(index, product.isCart);
-                              // context.read<CartCubit>().fetchCartItems();
-                              // with extensions
+                        child: ValueListenableBuilder(
+                            valueListenable: cartItemsId,
+                            builder: (context, cartItems, _) {
+                              print('update product item home');
+                              return IconButton(
+                                  icon: Icon(
+                                    cartItems[product.id] == true
+                                        ? Icons.shopping_cart_rounded
+                                        : Icons.shopping_cart_outlined,
+                                    color: Colors.black,
+                                  ),
+                                  onPressed: () =>
+                                      onCartPressed(index, product.isCart));
                             }),
                       ),
                     ),

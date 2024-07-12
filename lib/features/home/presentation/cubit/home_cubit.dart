@@ -47,6 +47,16 @@ class HomeCubit extends Cubit<HomeCubitState> {
 
   Future<void> _fetchRecommended() async {
     products = await _getProductsUsecase.perform(null);
+    // cartItemsId.value = {  item.id : item.isCart };
+    for (var item in products) {
+      if (item.isCart) {
+        cartItemsId.value = {
+          ...cartItemsId.value,
+          item.id: true,
+        };
+      }
+    }
+    print('HomeCubit: products in cart ==> ${cartItemsId.value}');
     emit(RecommendedProductsLoadedSuccessfullyState());
   }
 
@@ -118,14 +128,21 @@ class HomeCubit extends Cubit<HomeCubitState> {
       print(isCartItemStatus);
       print(message);
       if (isCartItemStatus) {
-        var tempList = cartItemsNotifier.value;
         if (message == 'Added Successfully') {
           cartItemsCounter.value++;
           // tempList.add(cartProductItem!);
-          cartItemsNotifier.value = List.from(cartItemsNotifier.value)..add(cartProductItem!);
+          cartItemsNotifier.value = List.from(cartItemsNotifier.value)
+            ..add(cartProductItem!);
+          cartItemsId.value = {
+            ...cartItemsId.value,
+            cartProductItem.product.id: true
+          };
         } else if (message == 'Deleted Successfully') {
           cartItemsCounter.value--;
-          cartItemsNotifier.value = List.from(cartItemsNotifier.value)..removeLast();
+          cartItemsNotifier.value = List.from(cartItemsNotifier.value)
+            ..removeLast();
+          cartItemsId.value = {...cartItemsId.value}
+            ..remove(cartProductItem?.product.id);
         }
         emit(CartItemToggledRemotelySuccessState());
         print('AppCubit ==> cart items count: ${cartItemsCounter.value}');
