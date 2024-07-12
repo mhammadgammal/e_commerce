@@ -22,7 +22,6 @@ import '../di/di.dart';
 class AppRouter {
   static final Map<String, WidgetBuilder> generateRoute = {
     RouterHelper.root: (_) => BlocProvider(
-          lazy: true,
           create: (context) => AppCubit(),
           child: const AppLayout(),
         ),

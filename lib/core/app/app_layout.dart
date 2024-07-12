@@ -65,18 +65,20 @@ class _AppLayoutState extends State<AppLayout> {
                   ),
                 );
               }),
-          body: SafeArea(
-            top: false,
-            child: IndexedStack(
-              index: cubit.currentIndex,
-              children: cubit.screens.map((e) => e.$3).toList(),
-            ),
-          ),
+          body: cubit.screens[cubit.currentIndex].$3
         );
       },
     );
   }
 }
+
+/*SafeArea(
+            top: false,
+            child: IndexedStack(
+              index: cubit.currentIndex,
+              children: cubit.screens.map((e) => e.$3).toList(),
+            ),
+          ),*/
 
 /*            bottomNavigationBar: BottomNavigationBar(
               currentIndex: cubit.currentIndex,

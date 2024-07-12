@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 
 abstract class AppNavigator {
   static void navigateTtoToLayout(BuildContext context) =>
-      Navigator.popAndPushNamed(context, RouterHelper.root);
+      Navigator.of(context).pushNamedAndRemoveUntil(
+        RouterHelper.root,
+        (Route<dynamic> route) => false,
+      );
 
   static void navigateToRegister(BuildContext context) =>
-      Navigator.pushNamed(context, RouterHelper.register);
+      Navigator.popAndPushNamed(context, RouterHelper.register);
 
   static void navigateAndFinishToLogin(BuildContext context) =>
       Navigator.popAndPushNamed(context, RouterHelper.login);

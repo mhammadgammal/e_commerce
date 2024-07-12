@@ -91,9 +91,49 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 35.0,
                       ),
-                      const Text(
-                        ' ---------------------------------- OR ----------------------------------',
-                        style: AppTextStyle.font17BlackNormal,
+                      // const Text(
+                      //   ' ---------------------------------- OR ----------------------------------',
+                      //   style: AppTextStyle.font17BlackNormal,
+                      // ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              // width: MediaQuery.of(context).size.width * 0.4,
+                              margin: const EdgeInsetsDirectional.only(
+                                start: 5.0,
+                                end: 5.0,
+                              ),
+                              height: 8.0,
+                              decoration: const BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const Text(
+                            'OR',
+                            style: AppTextStyle.font17BlackNormal,
+                          ),
+                          Expanded(
+                            child: Container(
+                              // width: MediaQuery.of(context).size.width * 0.4,
+                              margin: const EdgeInsetsDirectional.only(
+                                start: 5.0,
+                                end: 5.0,
+                              ),
+                              height: 8.0,
+                              decoration: const BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(5.0),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       const SizedBox(
                         height: 35.0,
