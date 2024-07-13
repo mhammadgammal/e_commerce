@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/cache/cache_helper.dart';
 import 'package:e_commerce/core/cache/cache_keys.dart';
-import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
+import 'package:e_commerce/core/data/user_model.dart';
 import 'package:e_commerce/features/authentication/domain/usecase/register_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

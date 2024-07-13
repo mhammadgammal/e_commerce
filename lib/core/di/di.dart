@@ -3,7 +3,7 @@ import 'package:e_commerce/core/cache/cache_helper.dart';
 import 'package:e_commerce/core/utils/api_utils/dio_helper.dart';
 import 'package:e_commerce/features/authentication/data/network/authentication_api_service.dart';
 import 'package:e_commerce/features/authentication/data/repositories/authentcation_repository_impl.dart';
-import 'package:e_commerce/features/authentication/domain/entity/user_model.dart';
+import 'package:e_commerce/core/data/user_model.dart';
 import 'package:e_commerce/features/cart/data/network/cart_api_service.dart';
 import 'package:e_commerce/features/cart/data/repository/cart_repository_impl.dart';
 import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
