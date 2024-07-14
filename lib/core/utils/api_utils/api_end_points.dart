@@ -7,4 +7,6 @@ class ApiEndPoints {
   static const String categories = 'categories';
   static const favorite = 'favorites';
   static const cart = 'carts';
+
+  static const profile = 'profile';
 }

@@ -12,6 +12,7 @@ import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usec
 import 'package:e_commerce/features/favorite/domain/usecase/get_favorite_products.dart';
 import 'package:e_commerce/features/favorite/presentation/cubit/favorite_products_cubit.dart';
 import 'package:e_commerce/features/favorite/presentation/screen/favorite_products_screen.dart';
+import 'package:e_commerce/features/profile/presentation/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/authentication/domain/usecase/login_usecase.dart';
@@ -53,6 +54,7 @@ class AppRouter {
               ChangeFavoriteUsecase(sl.get()))
             ..getFavoriteProducts(),
           child: const FavoriteProductsScreen(),
-        )
+        ),
+    RouterHelper.editProfile: (_) => EditProfileScreen()
   };
 }

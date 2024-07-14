@@ -9,13 +9,17 @@ import 'package:e_commerce/features/cart/data/repository/cart_repository_impl.da
 import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
 import 'package:e_commerce/features/favorite/data/network/favorite_api_service.dart';
 import 'package:e_commerce/features/favorite/data/repository/favorite_repository_impl.dart';
+import 'package:e_commerce/features/profile/data/data_source/local/profile_db_service.dart';
+import 'package:e_commerce/features/profile/data/repository/profile_repository_impl.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/categories/data/repositories/category_repository_impl.dart';
 import '../../features/home/data/network/products_api_service.dart';
 import '../../features/home/data/repositories/products_repository_impl.dart';
+import '../../features/profile/data/data_source/remote/profle_api_service.dart';
 import '../utils/localization/app_localization.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 final sl = GetIt.instance;
 
@@ -33,6 +37,16 @@ Future<void> init() async {
   sl.registerLazySingleton<CacheHelper>(() => CacheHelper(
         sl.get(),
       ));
+  // #endregion
+
+  // #region database
+
+  // Register Hive as a lazy singleton
+  sl.registerLazySingleton<HiveInterface>(() => Hive);
+  await sl<HiveInterface>().initFlutter();
+  sl<HiveInterface>().registerAdapter(UserModelAdapter());
+  print(
+      'User adpter registered: ${sl<HiveInterface>().isAdapterRegistered(0)}');
   // #endregion
 
   // #region User
@@ -89,5 +103,12 @@ Future<void> init() async {
   sl.registerLazySingleton<CartApiServiceImpl>(() => CartApiServiceImpl());
   sl.registerLazySingleton<CartRepositoryImpl>(
       () => CartRepositoryImpl(sl.get()));
+  // #endregion
+
+  // #region profile
+  sl.registerLazySingleton<ProfileDbService>(() => ProfileDbService());
+  sl.registerLazySingleton<ProfleApiService>(() => ProfleApiService());
+  sl.registerLazySingleton<ProfileRepositoryImpl>(
+      () => ProfileRepositoryImpl(sl.get(), sl.get()));
   // #endregion
 }

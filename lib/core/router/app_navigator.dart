@@ -26,4 +26,9 @@ abstract class AppNavigator {
 
   static Future<dynamic> navigateToFavorite(BuildContext context) =>
       Navigator.pushNamed(context, RouterHelper.favorite);
+
+  static navigateToEditProfile(
+    BuildContext context,
+  ) =>
+      Navigator.pushNamed(context, RouterHelper.editProfile);
 }

@@ -15,5 +15,7 @@ abstract class RouterHelper {
 
   static const favorite = '/favorite';
 
+  static const editProfile = '/editProfile';
+
 
 }
