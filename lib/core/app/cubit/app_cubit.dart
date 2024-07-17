@@ -85,7 +85,9 @@ class AppCubit extends Cubit<AppState> {
         create: (context) => ProfileCubit(
           GetProfileLocalUsecase(sl.get()),
           GetProfileRemoteUsecase(sl.get()),
-        )..getUserData(),
+        )
+          ..getUserData()
+          ..prepareProfileGroup(),
         child: ProfileScreen(),
       )
     ),

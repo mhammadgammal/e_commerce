@@ -49,19 +49,6 @@ Future<void> init() async {
       'User adpter registered: ${sl<HiveInterface>().isAdapterRegistered(0)}');
   // #endregion
 
-  // #region User
-  sl.registerLazySingleton<UserModel>(() => UserModel(
-        id: '-1',
-        name: '',
-        email: '',
-        phone: '',
-        image: '',
-        token: '',
-        credit: '',
-        points: '',
-      ));
-  // #endregion
-
   // #region Dio
   sl.registerLazySingleton<Dio>(() => Dio());
   sl.registerLazySingleton<DioHelper>(() => DioHelper(
