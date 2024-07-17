@@ -29,6 +29,12 @@ class CacheHelper {
 
   String? getString({required String key}) => _sharedPreferences.getString(key);
 
+  Future<bool>? putBool(String key, bool value) async =>
+      _sharedPreferences.setBool(key, value);
+
+  
+  bool? getBool({required String key}) => _sharedPreferences.getBool(key);
+  
   List<String>? getCountries() =>
       _sharedPreferences.getStringList(CacheKeys.countries);
 

@@ -16,11 +16,16 @@ class ECommerceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? token = sl<CacheHelper>().getString(key: CacheKeys.token);
+    bool? isBoarding = sl<CacheHelper>().getBool(key: CacheKeys.isBoarding);
     print(token);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: token != null ? RouterHelper.root : RouterHelper.onBoarding,
+      initialRoute: isBoarding == null
+          ? RouterHelper.onBoarding
+          : token != null
+              ? RouterHelper.root
+              : RouterHelper.login,
       routes: AppRouter.generateRoute,
       locale: appLanguage.appLocal,
       supportedLocales: LocalizeConstants.supportedLocales,

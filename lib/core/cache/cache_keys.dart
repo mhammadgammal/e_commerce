@@ -4,4 +4,6 @@ abstract class CacheKeys {
   static const comments = 'COMMENTS';
 
   static const token = 'TOKEN';
+
+  static const isBoarding = 'IS_BOARDING';
 }

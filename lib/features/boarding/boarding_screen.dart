@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/cache/cache_keys.dart';
+import 'package:e_commerce/core/di/di.dart';
 import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/theme/app_images.dart';
@@ -5,6 +7,7 @@ import 'package:e_commerce/core/utils/localization/app_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../core/cache/cache_helper.dart';
 import 'boarding_item.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -70,7 +73,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       floatingActionButton: Visibility(
         visible: isLastPage,
         child: FloatingActionButton(
-          onPressed: () => AppNavigator.navigateToRegister(context),
+          onPressed: () {
+            sl<CacheHelper>().putBool(CacheKeys.isBoarding, true);
+            AppNavigator.navigateToRegister(context);
+          },
           backgroundColor: AppColors.complementaryColor3,
           child: const Icon(Icons.arrow_forward),
         ),
