@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
                         const SizedBox(
                           height: 20.0,
                         ),
-                        Container(
+                        SizedBox(
                           height: 200.0,
                           width: double.infinity,
                           child: GridView.builder(
@@ -105,6 +105,7 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                               itemCount: cubit.myAccountSection.length),
                         ),
+                        const SizedBox(height: 20.0),
                         // settings section
                         const Text(
                           'Settings',
@@ -134,9 +135,36 @@ class ProfileScreen extends StatelessWidget {
                               itemCount: cubit.settingsSection.length),
                         ),
                         const SizedBox(
-                          height: 5.0,
+                          height: 25.0,
                         ),
-
+                        const Divider(
+                          height: 2.0,
+                          indent: 140.0,
+                          endIndent: 140.0,
+                          color: Colors.grey,
+                        ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          style: const ButtonStyle(
+                              backgroundColor:
+                                  WidgetStatePropertyAll(Colors.white)),
+                          child: const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.power_settings_new_outlined, size: 22.0,),
+                              SizedBox(
+                                width: 15.0,
+                              ),
+                              Text(
+                                'Sign Out',
+                                style: AppTextStyle.font16BlackNormal,
+                              )
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ));

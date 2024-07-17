@@ -33,7 +33,7 @@ class GreetingWidget extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
           leading: CircleAvatar(
             backgroundColor: Colors.grey,
-            child: Text('$firstNameChar$lastNameChar'),
+            child: Text('$firstNameChar$lastNameChar', style: const TextStyle(color: Colors.black),),
           ),
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
