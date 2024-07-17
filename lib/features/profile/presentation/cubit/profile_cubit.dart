@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/data/user_model.dart';
 import 'package:e_commerce/core/theme/app_images.dart';
 import 'package:e_commerce/features/profile/domain/usecase/get_profile_local_usecase.dart';
+import 'package:e_commerce/features/profile/domain/usecase/logout_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,9 +9,9 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   final GetProfileLocalUsecase _getProfileLocalUsecase;
-  ProfileCubit(
-    this._getProfileLocalUsecase,
-  ) : super(ProfileInitial());
+  final LogoutUsecase _logoutUsecase;
+  ProfileCubit(this._getProfileLocalUsecase, this._logoutUsecase)
+      : super(ProfileInitial());
 
   static ProfileCubit get(context) => BlocProvider.of(context);
   UserModel? user;
@@ -55,5 +56,15 @@ class ProfileCubit extends Cubit<ProfileState> {
     ];
 
     emit(ProfileGroupLoadedSuccessState());
+  }
+
+  void logout() async {
+    try {
+      _logoutUsecase.perform(null);
+      emit(LogoutSucessState());
+    } catch (e) {
+      print(e);
+      emit(LogoutFailureState());
+    }
   }
 }

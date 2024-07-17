@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/features/profile/presentation/cubit/profile_cubit.dart';
@@ -10,7 +11,14 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProfileCubit, ProfileState>(
+    return BlocConsumer<ProfileCubit, ProfileState>(
+      listener: (context, state) {
+        if (
+          state is LogoutSucessState
+        ){
+          AppNavigator.navigateAndFinishToLogin(context);
+        }
+      },
       builder: (context, state) {
         var cubit = ProfileCubit.get(context);
         return Scaffold(
@@ -147,14 +155,17 @@ class ProfileScreen extends StatelessWidget {
                           height: 15.0,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () => cubit.logout(),
                           style: const ButtonStyle(
                               backgroundColor:
                                   WidgetStatePropertyAll(Colors.white)),
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(Icons.power_settings_new_outlined, size: 22.0,),
+                              Icon(
+                                Icons.power_settings_new_outlined,
+                                size: 22.0,
+                              ),
                               SizedBox(
                                 width: 15.0,
                               ),

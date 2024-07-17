@@ -8,14 +8,13 @@ abstract interface class ProfileDbServiceInterface {
   Future getUser();
   void addUser(UserModel user);
   Future updateUser(UserModel user);
-  Future deleteUser(UserModel user);
+  void deleteUser();
 }
 
 class ProfileDbService implements ProfileDbServiceInterface {
   @override
-  Future deleteUser(UserModel user) {
-    // TODO: implement deleteUser
-    throw UnimplementedError();
+  void deleteUser() {
+    DbHelper.getBox('user').then((value) => value.clear());
   }
 
   @override

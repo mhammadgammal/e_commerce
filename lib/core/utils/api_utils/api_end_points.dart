@@ -9,4 +9,6 @@ class ApiEndPoints {
   static const cart = 'carts';
 
   static const profile = 'profile';
+
+  static const logout = 'logout';
 }

@@ -7,6 +7,7 @@ import 'package:e_commerce/core/utils/api_utils/dio_helper.dart';
 abstract interface class ProfleApiServiceInterface {
   Future<Response> getProfile();
   Future<Response> updateProfile(UserModel user);
+  Future<Response> logout();
 }
 
 class ProfleApiService implements ProfleApiServiceInterface{
@@ -18,5 +19,8 @@ class ProfleApiService implements ProfleApiServiceInterface{
     // TODO: implement updateProfile
     throw UnimplementedError();
   }
+
+  @override
+  logout() => sl<DioHelper>().post(url: ApiEndPoints.logout, data: {});
 
 }
