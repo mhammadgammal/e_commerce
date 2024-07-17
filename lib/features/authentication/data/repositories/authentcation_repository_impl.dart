@@ -43,12 +43,6 @@ class AuthentcationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
-
-  @override
   Future<UserModel?> register(RegisterParams params) async {
     try {
       final response = await _authenticationApiServiceImpl.register(params);

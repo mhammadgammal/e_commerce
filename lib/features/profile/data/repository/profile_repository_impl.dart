@@ -10,15 +10,17 @@ class ProfileRepositoryImpl implements ProfileRepositoryInterface {
   ProfileRepositoryImpl(this._dbService, this._remoteService);
 
   @override
-  Future<UserModel> getLocalUser() async {
-    var user = await _dbService.getUser();
-    print('local user: ${user.id}');   
-    print('local user: ${user.credit}');   
+  Future<UserModel> getUser() async {
+    UserModel? user;
+    user = await _dbService.getUser();
+    if (user == null) {
+      user = await _getRemoteUser();
+      _dbService.addUser(user);
+    }
     return user;
   }
 
-  @override
-  Future<UserModel> getRemoteUser() async {
+  Future<UserModel> _getRemoteUser() async {
     var response = await _remoteService.getProfile();
     print('profile response: ${response.data}');
     return UserModel.fromJson(response.data['data']);

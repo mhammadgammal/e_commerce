@@ -7,7 +7,6 @@ import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usec
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 import 'package:e_commerce/features/profile/domain/usecase/get_profile_local_usecase.dart';
-import 'package:e_commerce/features/profile/domain/usecase/get_profile_remote_usecase.dart';
 import 'package:e_commerce/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:e_commerce/features/profile/presentation/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -84,7 +83,6 @@ class AppCubit extends Cubit<AppState> {
       BlocProvider(
         create: (context) => ProfileCubit(
           GetProfileLocalUsecase(sl.get()),
-          GetProfileRemoteUsecase(sl.get()),
         )
           ..getUserData()
           ..prepareProfileGroup(),

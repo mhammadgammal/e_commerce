@@ -7,6 +7,6 @@ class GetProfileLocalUsecase implements BaseUsecase<UserModel> {
   GetProfileLocalUsecase(this._profileRepository);
   @override
   Future<UserModel> perform(params) async {
-    return await _profileRepository.getLocalUser();
+    return await _profileRepository.getUser();
   }
 }
