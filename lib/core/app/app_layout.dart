@@ -42,7 +42,7 @@ class _AppLayoutState extends State<AppLayout> {
                     (index) => BottomNavigationBarItem(
                         icon: index == 3
                             ? Stack(
-                          alignment: Alignment.topRight,
+                                alignment: Alignment.topRight,
                                 children: [
                                   cubit.screens[index].$1,
                                   Visibility(
@@ -65,7 +65,13 @@ class _AppLayoutState extends State<AppLayout> {
                   ),
                 );
               }),
-          body: cubit.screens[cubit.currentIndex].$3
+          body: SafeArea(
+            top: false,
+            child: IndexedStack(
+              index: cubit.currentIndex,
+              children: cubit.screens.map((e) => e.$3).toList(),
+            ),
+          ),
         );
       },
     );
