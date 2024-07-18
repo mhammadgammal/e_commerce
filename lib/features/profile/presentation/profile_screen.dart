@@ -13,9 +13,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ProfileCubit, ProfileState>(
       listener: (context, state) {
-        if (
-          state is LogoutSucessState
-        ){
+        if (state is LogoutSucessState) {
           AppNavigator.navigateAndFinishToLogin(context);
         }
       },
