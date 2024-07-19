@@ -22,7 +22,7 @@ platform :android do
     sh "flutter build apk --release"
     firebase_app_distribution(
       app: "1:406408892526:android:6bd338f7c11b3f6e0b567f",
-      firebase_cli_token: "1//03NYutDy3G-zCCgYIARAAGAMSNwF-L9IrDKOypKxfeaMnG5eQGuiP7LZRGX_-cKj-tHDFsuGwC2CeNjzAh-uweSauxoz17OFrb6c",
+      firebase_cli_token: "1//03sLkLohGDRWSCgYIARAAGAMSNwF-L9IrHPvr1Bp4WywskcMmxl7wrqhvLIOtBO4viMxkQxm9PKAjcHhVtw23NrrFVbACcCfQ8pA",
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
       testers: "m7amedking112@gmail.com, shehabehab1029@gmail.com",
