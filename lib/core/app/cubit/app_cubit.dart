@@ -6,9 +6,6 @@ import 'package:e_commerce/features/cart/presentation/screens/cart_screen.dart';
 import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
-import 'package:e_commerce/features/profile/domain/usecase/get_profile_local_usecase.dart';
-import 'package:e_commerce/features/profile/domain/usecase/logout_usecase.dart';
-import 'package:e_commerce/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:e_commerce/features/profile/presentation/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +78,7 @@ class AppCubit extends Cubit<AppState> {
         size: 30,
       ),
       'Profile',
-      ProfileScreen()
+      const ProfileScreen()
     ),
     (
       const Icon(
