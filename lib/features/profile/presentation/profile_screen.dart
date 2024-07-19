@@ -2,6 +2,7 @@ import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:e_commerce/features/profile/presentation/widgets/custom_divier.dart';
 import 'package:e_commerce/features/profile/presentation/widgets/greeting_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -103,10 +104,9 @@ class ProfileScreen extends StatelessWidget {
                                         const Icon(Icons.arrow_forward_ios),
                                   ),
                               separatorBuilder: (context, index) =>
-                                  const Divider(
+                                  const CustomDivier(
                                     height: 2.0,
                                     indent: 20.0,
-                                    endIndent: 20.0,
                                     color: Colors.grey,
                                   ),
                               itemCount: cubit.myAccountSection.length),
@@ -132,22 +132,14 @@ class ProfileScreen extends StatelessWidget {
                                         const Icon(Icons.arrow_forward_ios),
                                   ),
                               separatorBuilder: (context, index) =>
-                                  const Divider(
-                                    height: 2.0,
-                                    indent: 20.0,
-                                    endIndent: 20.0,
-                                    color: Colors.grey,
-                                  ),
+                                  const CustomDivier(),
                               itemCount: cubit.settingsSection.length),
                         ),
                         const SizedBox(
                           height: 25.0,
                         ),
-                        const Divider(
-                          height: 2.0,
+                        const CustomDivier(
                           indent: 140.0,
-                          endIndent: 140.0,
-                          color: Colors.grey,
                         ),
                         const SizedBox(
                           height: 15.0,

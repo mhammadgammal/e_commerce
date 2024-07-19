@@ -81,15 +81,7 @@ class AppCubit extends Cubit<AppState> {
         size: 30,
       ),
       'Profile',
-      BlocProvider(
-        create: (context) => ProfileCubit(
-          GetProfileLocalUsecase(sl.get()),
-          LogoutUsecase(sl.get()),
-        )
-          ..getUserData()
-          ..prepareProfileGroup(),
-        child: ProfileScreen(),
-      )
+      ProfileScreen()
     ),
     (
       const Icon(

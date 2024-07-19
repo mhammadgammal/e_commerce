@@ -16,35 +16,45 @@ class ProfileCubit extends Cubit<ProfileState> {
   static ProfileCubit get(context) => BlocProvider.of(context);
   UserModel? user;
 
+  bool isModified = false;
   List<(Widget, String, String)> profileGroup = [];
   List<(Widget, String)> myAccountSection = [
-    (Icon(Icons.location_on), 'Addresses'),
-    (Icon(Icons.payment), 'Payments'),
+    (const Icon(Icons.location_on), 'Addresses'),
+    (const Icon(Icons.payment), 'Payments'),
   ];
 
   List<(Widget, String)> settingsSection = [
-    (Icon(Icons.language), 'Country'),
-    (Icon(Icons.flag), 'Language'),
+    (const Icon(Icons.language), 'Country'),
+    (const Icon(Icons.flag), 'Language'),
   ];
-  TextEditingController nameController = TextEditingController();
+  late TextEditingController firstNameController;
+  late TextEditingController lastNameController;
 
-  TextEditingController emailController = TextEditingController();
+  late TextEditingController emailController;
 
-  TextEditingController currentPasswordController = TextEditingController();
+  late TextEditingController phoneController;
+  late TextEditingController currentPasswordController;
 
-  TextEditingController newPasswordController = TextEditingController();
+  late TextEditingController newPasswordController;
 
-  TextEditingController confirmNewPasswordController = TextEditingController();
+  late TextEditingController confirmNewPasswordController;
 
   void getUserData() async {
     user = await _getProfileLocalUsecase.perform(null);
     print(user);
+    _prepareTextFields();
     emit(UserLoadedSuccessState());
   }
 
-  void prepareTextFields() {
-    nameController.text = user!.name;
-    emailController.text = user!.email;
+  void _prepareTextFields() {
+    var userName = user!.name;
+    var firstName = userName.split(' ')[0];
+    var lastName = userName.split(' ')[1];
+    firstNameController = TextEditingController(text: firstName);
+    lastNameController = TextEditingController(text: lastName);
+    emailController = TextEditingController(text: user!.email);
+    phoneController = TextEditingController(text: user!.phone);
+    emit(ProfileEditTextFieldsPreparedState());
   }
 
   void prepareProfileGroup() {
@@ -65,6 +75,38 @@ class ProfileCubit extends Cubit<ProfileState> {
     } catch (e) {
       print(e);
       emit(LogoutFailureState());
+    }
+  }
+
+  onFirstNameValueChged(String value) {
+    var firstName = user!.name.split(' ')[0];
+    if (value.trim() == firstName) {
+      isModified = false;
+      emit(ModificationState());
+    } else {
+      isModified = true;
+      emit(ModificationState());
+    }
+  }
+
+  onLastNameValueChanged(String value) {
+    var lastName = user!.name.split(' ')[1];
+    if (value.trim() == lastName) {
+      isModified = false;
+      emit(ModificationState());
+    } else {
+      isModified = true;
+      emit(ModificationState());
+    }
+  }
+
+  onPhoneNumberChanged(String value) {
+    if (value.trim() == user!.phone) {
+      isModified = false;
+      emit(ModificationState());
+    } else {
+      isModified = false;
+      emit(ModificationState());
     }
   }
 }

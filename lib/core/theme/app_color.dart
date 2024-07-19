@@ -39,4 +39,5 @@ abstract final class AppColors {
   static const Color complementaryColor7 = Color(0xffecddaf);
 
   static const lightGrey = Color(0xFFD3D3D3);
+  static const diasabledBtnColor = Color(0xFFCED1DA);
 }
