@@ -45,6 +45,8 @@ class CartRepositoryImpl implements CartRepository {
                 oldPrice: '',
                 price: '',
                 discountPercentage: '',
+                description: '',
+                images: [],
                 isCart: false,
                 isFavourite: false))
       );
