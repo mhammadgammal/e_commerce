@@ -5,6 +5,8 @@ class ProductModel {
   String discountPercentage;
   String title;
   String image;
+  List<String> images;
+  String description;
   bool isFavourite;
   bool isCart;
 
@@ -15,6 +17,8 @@ class ProductModel {
       required this.discountPercentage,
       required this.title,
       required this.image,
+      required this.description,
+      required this.images,
       this.isFavourite = false,
       this.isCart = false});
 
@@ -24,8 +28,10 @@ class ProductModel {
           price: productsResponse['price'].toString(),
           oldPrice: productsResponse['old_price'].toString(),
           discountPercentage: productsResponse['discount'].toString(),
-          title: productsResponse['name']??'',
+          title: productsResponse['name'] ?? '',
           image: productsResponse['image'],
+          images: List.generate(productsResponse ['images'].length, (index) => productsResponse ['images'][index] as String),
+          description: productsResponse['description'],
           isFavourite: productsResponse['in_favorites'] ?? true,
-          isCart: productsResponse['in_cart']?? false);
+          isCart: productsResponse['in_cart'] ?? false);
 }
