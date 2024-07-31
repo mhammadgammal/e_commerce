@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/features/home/presentation/widgets/product_card_item.dart';
 import 'package:flutter/material.dart';
@@ -36,12 +37,15 @@ class RecommendedProducts extends StatelessWidget {
               itemCount: products.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return ProductCardItem(
-                  index: index,
-                  product: products[index],
-                  onItemPressed: onItemPressed,
-                  onFavPressed: onFavPressed,
-                  onCartPressed: onCartPressed,
+                return GestureDetector(
+                  onTap: () => AppNavigator.navigateToProductDetails(context, products[index]),
+                  child: ProductCardItem(
+                    index: index,
+                    product: products[index],
+                    onItemPressed: onItemPressed,
+                    onFavPressed: onFavPressed,
+                    onCartPressed: onCartPressed,
+                  ),
                 );
               },
             ),
