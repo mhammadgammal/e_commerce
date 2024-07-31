@@ -17,5 +17,7 @@ abstract class RouterHelper {
 
   static const editProfile = '/editProfile';
 
+  static const productDetails = '/productDetails';
+
 
 }

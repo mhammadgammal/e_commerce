@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/router/router_helper.dart';
+import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppNavigator {
@@ -31,4 +32,11 @@ abstract class AppNavigator {
     BuildContext context,
   ) =>
       Navigator.pushNamed(context, RouterHelper.editProfile);
+
+  static navigateToProductDetails(BuildContext context, ProductModel product) =>
+      Navigator.pushNamed(
+        context,
+        RouterHelper.productDetails,
+        arguments: product
+      );
 }

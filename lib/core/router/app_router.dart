@@ -12,6 +12,8 @@ import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usec
 import 'package:e_commerce/features/favorite/domain/usecase/get_favorite_products.dart';
 import 'package:e_commerce/features/favorite/presentation/cubit/favorite_products_cubit.dart';
 import 'package:e_commerce/features/favorite/presentation/screen/favorite_products_screen.dart';
+import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
+import 'package:e_commerce/features/home/presentation/screen/product_details_screen.dart';
 import 'package:e_commerce/features/profile/presentation/edit_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,6 +57,11 @@ class AppRouter {
             ..getFavoriteProducts(),
           child: const FavoriteProductsScreen(),
         ),
-    RouterHelper.editProfile: (_) => EditProfileScreen()
+    RouterHelper.editProfile: (_) => const EditProfileScreen(),
+    RouterHelper.productDetails: (context) {
+      final product =
+          ModalRoute.of(context)!.settings.arguments as ProductModel;
+      return ProductDetailsScreen(productModel: product);
+    },
   };
 }
