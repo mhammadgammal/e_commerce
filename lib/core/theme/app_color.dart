@@ -24,7 +24,7 @@ abstract final class AppColors {
   static const Color lightShade2 = Color.fromARGB(255, 136, 153, 255);
   static const Color lightShade3 = Color.fromARGB(255, 161, 177, 255);
   static const Color lightShade4 = Color.fromARGB(255, 186, 202, 255);
-  static const Color lightShade5 = Color.fromARGB(255, 211, 227, 255);
+  static const Color lightShade5 = Color.fromARGB(255, 7, 34, 82);
 
   static const Color complementaryColor1 =
       Color.fromARGB(255, 251, 86, 86); // Red
