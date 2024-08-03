@@ -38,7 +38,7 @@ class RecommendedProducts extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return GestureDetector(
-                  onTap: () => AppNavigator.navigateToProductDetails(context, products[index]),
+                  onTap: () => AppNavigator.navigateToProductDetails(context, (index, products[index])),
                   child: ProductCardItem(
                     index: index,
                     product: products[index],
