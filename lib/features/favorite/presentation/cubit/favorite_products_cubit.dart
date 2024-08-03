@@ -34,13 +34,16 @@ class FavoriteProductsCubit extends Cubit<FavoriteProductsState> {
   void _removeFavoriteProduct(BuildContext context, int productId) async {
     bool isFavourite = true;
     String? message;
+    ProductModel? productModel;
     try {
-      (isFavourite, message) = await _changeFavoriteUsecase.perform(productId);
+      (isFavourite, message, productModel) =
+          await _changeFavoriteUsecase.perform(productId);
       print('fav cubit: $isFavourite');
       print('fav cubit: $message');
 
       favoriteProducts
           .removeWhere((product) => product.id == productId.toString());
+      favoriteProducts.remove(productModel);
       this.productId = productId;
       emit(FavoriteProductRemovedRemotelySuccessState());
       Navigator.pop(context);
