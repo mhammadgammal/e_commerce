@@ -9,14 +9,20 @@ import 'package:e_commerce/features/cart/data/repository/cart_repository_impl.da
 import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
 import 'package:e_commerce/features/favorite/data/network/favorite_api_service.dart';
 import 'package:e_commerce/features/favorite/data/repository/favorite_repository_impl.dart';
+import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/profile/data/data_source/local/profile_db_service.dart';
 import 'package:e_commerce/features/profile/data/repository/profile_repository_impl.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../features/cart/domain/usecase/toggle_cart_item_usecase.dart';
 import '../../features/categories/data/repositories/category_repository_impl.dart';
+import '../../features/favorite/domain/usecase/change_favorite_usecase.dart';
 import '../../features/home/data/network/products_api_service.dart';
 import '../../features/home/data/repositories/products_repository_impl.dart';
+import '../../features/home/domain/usecase/get_ad_usecase.dart';
+import '../../features/home/domain/usecase/get_banners_usecase.dart';
+import '../../features/home/domain/usecase/get_products_usecase.dart';
 import '../../features/profile/data/data_source/remote/profle_api_service.dart';
 import '../utils/localization/app_localization.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -65,6 +71,17 @@ Future<void> init() async {
   // #endregion
 
   // #region Home Products
+
+  sl.registerLazySingleton<ChangeFavoriteUsecase>(
+      () => ChangeFavoriteUsecase(sl.get()));
+  sl.registerLazySingleton<GetProductsUsecase>(
+      () => GetProductsUsecase(sl.get()));
+  sl.registerLazySingleton<ToggleCartItemUsecase>(
+      () => ToggleCartItemUsecase(sl.get()));
+  sl.registerLazySingleton<GetBannersUsecase>(
+      () => GetBannersUsecase(sl.get()));
+  sl.registerLazySingleton<GetAdUsecase>(() => GetAdUsecase(sl.get()));
+
   sl.registerLazySingleton<ProductsApiServiceImpl>(
       () => ProductsApiServiceImpl());
   sl.registerLazySingleton<ProductsRepositoryImpl>(
@@ -97,5 +114,10 @@ Future<void> init() async {
   sl.registerLazySingleton<ProfleApiService>(() => ProfleApiService());
   sl.registerLazySingleton<ProfileRepositoryImpl>(
       () => ProfileRepositoryImpl(sl.get(), sl.get()));
+  // #endregion
+
+  // #region cubits
+  sl.registerLazySingleton<HomeCubit>(
+      () => HomeCubit(sl.get(), sl.get(), sl.get(), sl.get(), sl.get()));
   // #endregion
 }

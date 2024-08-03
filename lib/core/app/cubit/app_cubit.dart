@@ -3,7 +3,6 @@ import 'package:e_commerce/features/cart/domain/usecase/get_cart_items_usecase.d
 import 'package:e_commerce/features/cart/domain/usecase/toggle_cart_item_usecase.dart';
 import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:e_commerce/features/cart/presentation/screens/cart_screen.dart';
-import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/home/presentation/screen/home_screen.dart';
 import 'package:e_commerce/features/profile/presentation/profile_screen.dart';
@@ -12,9 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../features/categories/domain/usecase/get_categories_usecase.dart';
 import '../../../features/categories/presentation/cubit/category_cubit/categories_cubit.dart';
 import '../../../features/categories/presentation/screen/category_screen.dart';
-import '../../../features/home/domain/usecase/get_ad_usecase.dart';
-import '../../../features/home/domain/usecase/get_banners_usecase.dart';
-import '../../../features/home/domain/usecase/get_products_usecase.dart';
 import '../../di/di.dart';
 
 part 'app_state.dart';
@@ -42,14 +38,7 @@ class AppCubit extends Cubit<AppState> {
       'Home',
       MultiBlocProvider(
         providers: [
-          BlocProvider(
-              create: (context) => HomeCubit(
-                    ChangeFavoriteUsecase(sl.get()),
-                    GetProductsUsecase(sl.get()),
-                    ToggleCartItemUsecase(sl.get()),
-                    GetBannersUsecase(sl.get()),
-                    GetAdUsecase(sl.get()),
-                  )..fetch()),
+          BlocProvider(create: (context) => sl<HomeCubit>()..fetch()),
           BlocProvider(
             create: (context) => CartCubit(
               GetCartItemsUsecase(
