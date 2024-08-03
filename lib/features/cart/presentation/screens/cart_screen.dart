@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/utils/screen_utils.dart';
 import 'package:e_commerce/core/widgets/auth_error_dialogue.dart';
 import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
@@ -28,7 +29,6 @@ class _CartScreenState extends State<CartScreen> {
             ),
           );
         }
-
         if (state is CartItemMovedToWislistFailureState) {
           showDialog(
               context: context,
@@ -49,26 +49,29 @@ class _CartScreenState extends State<CartScreen> {
                   return Text("Cart:$counterValue");
                 }),
             actions: [
-              Container(
-                margin: const EdgeInsetsDirectional.only(end: 15.0),
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.grey)),
-                child: const Row(
-                  children: [
-                    Icon(
-                      Icons.favorite_border,
-                      color: Colors.grey,
-                    ),
-                    Text(
-                      ' Wishlist ',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16.0),
-                    ),
-                    Icon(Icons.arrow_forward_ios_outlined,
-                        color: Colors.grey, size: 20.0)
-                  ],
+              GestureDetector(
+                onTap: () => AppNavigator.navigateToFavorite(context),
+                child: Container(
+                  margin: const EdgeInsetsDirectional.only(end: 15.0),
+                  decoration:
+                      BoxDecoration(border: Border.all(color: Colors.grey)),
+                  child: const Row(
+                    children: [
+                      Icon(
+                        Icons.favorite_border,
+                        color: Colors.grey,
+                      ),
+                      Text(
+                        ' Wishlist ',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16.0),
+                      ),
+                      Icon(Icons.arrow_forward_ios_outlined,
+                          color: Colors.grey, size: 20.0)
+                    ],
+                  ),
                 ),
               )
             ],
