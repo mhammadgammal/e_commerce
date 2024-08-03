@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/di/di.dart';
 import 'package:e_commerce/core/theme/app_text_style.dart';
 import 'package:e_commerce/core/widgets/search_field.dart';
 import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
@@ -6,13 +7,12 @@ import 'package:e_commerce/features/home/presentation/widgets/price_widget.dart'
 import 'package:e_commerce/features/home/presentation/widgets/wish_list_icon_widget.dart';
 import 'package:e_commerce/features/profile/presentation/widgets/custom_divier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
-  const ProductDetailsScreen({super.key, required this.productModel});
+  const ProductDetailsScreen({super.key, required this.productRecord});
 
-  final ProductModel productModel;
+  final (int, ProductModel) productRecord;
 
   @override
   State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
@@ -23,6 +23,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('detail index: ${widget.productRecord.$1}');
+    print('detail fav: ${widget.productRecord.$2.isFavourite}');
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -42,7 +44,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               padding: const EdgeInsetsDirectional.all(15.0),
               children: [
                 Text(
-                  widget.productModel.title.split(' ')[0],
+                  widget.productRecord.$2.title.split(' ')[0],
                   style: const TextStyle(
                     color: Colors.blue,
                     fontSize: 17.0,
@@ -50,7 +52,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ),
                 Text(
-                  widget.productModel.title,
+                  widget.productRecord.$2.title,
                   maxLines: 2,
                 ),
                 Stack(
@@ -60,14 +62,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       height: 200.0,
                       child: PageView.builder(
                         controller: _controller,
-                        itemCount: widget.productModel.images.length,
-                        itemBuilder: (context, index) =>
-                            Image.network(widget.productModel.images[index]),
+                        itemCount: widget.productRecord.$2.images.length,
+                        itemBuilder: (context, index) => Image.network(
+                            widget.productRecord.$2.images[index]),
                       ),
                     ),
                     WishListIcon(
-                        isFavourite: widget.productModel.isFavourite,
-                        onFavPressed: context.read<HomeCubit>().onFavPressed)
+                        index: widget.productRecord.$1,
+                        isFavourite: widget.productRecord.$2.isFavourite,
+                        onFavPressed: (index, isFav) {
+                          setState(() {
+                            sl<HomeCubit>().onFavPressed(index, isFav);
+                          });
+                        })
                   ],
                 ),
                 const SizedBox(
@@ -80,19 +87,19 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           dotWidth: 10.0,
                           dotHeight: 10.0,
                           activeDotColor: Colors.black),
-                      count: widget.productModel.images.length),
+                      count: widget.productRecord.$2.images.length),
                 ),
                 PriceWidget(
-                    oldPrice: widget.productModel.oldPrice,
-                    price: widget.productModel.price,
-                    discount: widget.productModel.discountPercentage),
+                    oldPrice: widget.productRecord.$2.oldPrice,
+                    price: widget.productRecord.$2.price,
+                    discount: widget.productRecord.$2.discountPercentage),
                 const CustomDivier(
                   indent: 0.0,
                 ),
                 Text('Description',
                     style: AppTextStyle.font20BlackBold
                       ..copyWith(fontWeight: FontWeight.normal)),
-                Text(widget.productModel.description),
+                Text(widget.productRecord.$2.description),
               ],
             ),
           ),
