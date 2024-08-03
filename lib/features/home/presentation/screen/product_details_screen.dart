@@ -107,7 +107,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             width: double.infinity,
             padding: const EdgeInsetsDirectional.symmetric(horizontal: 15.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => sl<HomeCubit>().onCartPressed(
+                  widget.productRecord.$1, widget.productRecord.$2.isCart),
               child: Text(
                 'Add To Cart',
                 style:
