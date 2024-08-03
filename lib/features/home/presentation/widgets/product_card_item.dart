@@ -21,7 +21,7 @@ class ProductCardItem extends StatelessWidget {
   final Function(ProductModel) onItemPressed;
 
   //void Function(int index, bool isFav)
-  final Function(int, bool) onFavPressed;
+  final Function(bool isFav, {int index, String id}) onFavPressed;
 
   final Function(int, bool) onCartPressed;
 

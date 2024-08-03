@@ -18,7 +18,7 @@ class HomeScreenBody extends StatelessWidget {
   final String ads;
   final List<BannerModel> banners;
   final List<ProductModel> products;
-  final void Function(int, bool) onFavPressed;
+  final void Function(bool isFav, {int index, String id}) onFavPressed;
   final void Function(int, bool) onCartPressed;
   @override
   Widget build(BuildContext context) {

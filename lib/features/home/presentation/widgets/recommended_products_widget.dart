@@ -15,7 +15,7 @@ class RecommendedProducts extends StatelessWidget {
   final String title;
   final List<ProductModel> products;
   final void Function(ProductModel) onItemPressed;
-  final void Function(int index, bool isFav) onFavPressed;
+  final void Function(bool isFav, {int index, String id}) onFavPressed;
   final void Function(int, bool) onCartPressed;
 
   @override

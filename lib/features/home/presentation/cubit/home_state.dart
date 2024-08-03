@@ -18,6 +18,7 @@ final class FavRemotlyToggledState extends HomeCubitState {}
 final class AdLoadedSuccessfullyState extends HomeCubitState {}
 
 final class FavoriteProductRemovedLocally extends HomeCubitState {}
+final class FavoriteProductAddedLocally extends HomeCubitState {}
 
 final class BannersLoadedSuccessfullyState extends HomeCubitState {}
 

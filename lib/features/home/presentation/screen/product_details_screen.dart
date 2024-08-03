@@ -70,9 +70,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     WishListIcon(
                         index: widget.productRecord.$1,
                         isFavourite: widget.productRecord.$2.isFavourite,
-                        onFavPressed: (index, isFav) {
+                        onFavPressed: (isFav, {index = -1, id = ''}) {
                           setState(() {
-                            sl<HomeCubit>().onFavPressed(index, isFav);
+                            sl<HomeCubit>().onFavPressed(isFav,
+                                index: widget.productRecord.$1);
                           });
                         })
                   ],

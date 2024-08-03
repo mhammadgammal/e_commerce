@@ -9,7 +9,7 @@ class WishListIcon extends StatelessWidget {
 
   final int index;
   final bool isFavourite;
-  final void Function(int, bool) onFavPressed;
+  final void Function(bool isFav, {int index, String id}  ) onFavPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class WishListIcon extends StatelessWidget {
           ),
           onPressed: () {
             print('on wish list pressed');
-            onFavPressed(index, isFavourite);
+            onFavPressed(isFavourite, index: index);
           },
         ),
       ),

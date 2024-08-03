@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
     return BlocConsumer<HomeCubit, HomeCubitState>(
       listener: (context, state) {
         if (state is RecommendedProductsLoadedSuccessfullyState ||
-            state is FavRemotlyToggledState) {
+            state is FavRemotlyToggledState || state is FavoriteProductAddedLocally) {
           HomeCubit.get(context).countFavProducts().then((value) {
             counter = value;
           });
