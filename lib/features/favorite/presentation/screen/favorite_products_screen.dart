@@ -1,5 +1,7 @@
 import 'package:e_commerce/core/router/app_navigator.dart';
+import 'package:e_commerce/core/theme/app_color.dart';
 import 'package:e_commerce/features/favorite/presentation/widgets/favorite_product_card_item.dart';
+import 'package:e_commerce/features/favorite/presentation/widgets/no_fav_data_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -34,24 +36,34 @@ class FavoriteProductsScreen extends StatelessWidget {
               height: double.infinity,
               child: Padding(
                 padding: const EdgeInsetsDirectional.all(15.0),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 1.0,
-                  crossAxisSpacing: 0.3,
-                  childAspectRatio:
-                      constraints.maxWidth > 400 ? 0.75 : 1 / 1.75,
-                  children: List.generate(
-                    cubit.favoriteProducts.length,
-                    (index) => GestureDetector(
-                      onTap: () => AppNavigator.navigateToProductDetails(
-                          context, (-1, cubit.favoriteProducts[index])),
-                      child: FavoriteProductCardItem(
-                        favProduct: cubit.favoriteProducts[index],
-                        showBottomSheet: cubit.showBottomSheet,
-                      ),
-                    ),
-                  ),
-                ),
+                child: state is FavoriteProductsLoadingState
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.primaryColor,
+                        ),
+                      )
+                    : cubit.favoriteProducts.isEmpty
+                        ? const NoFavDataBody()
+                        : GridView.count(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 1.0,
+                            crossAxisSpacing: 0.3,
+                            childAspectRatio:
+                                constraints.maxWidth > 400 ? 0.75 : 1 / 1.75,
+                            children: List.generate(
+                              cubit.favoriteProducts.length,
+                              (index) => GestureDetector(
+                                onTap: () =>
+                                    AppNavigator.navigateToProductDetails(
+                                        context,
+                                        (-1, cubit.favoriteProducts[index])),
+                                child: FavoriteProductCardItem(
+                                  favProduct: cubit.favoriteProducts[index],
+                                  showBottomSheet: cubit.showBottomSheet,
+                                ),
+                              ),
+                            ),
+                          ),
               ),
             );
           }),
