@@ -4,8 +4,11 @@ import 'package:e_commerce/features/cart/domain/usecase/get_cart_items_usecase.d
 import 'package:e_commerce/features/cart/domain/usecase/toggle_cart_item_usecase.dart';
 import 'package:e_commerce/features/favorite/domain/usecase/change_favorite_usecase.dart';
 import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
+import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+
+import '../../../../core/di/di.dart';
 
 part 'cart_state.dart';
 
@@ -78,20 +81,24 @@ class CartCubit extends Cubit<CartState> {
     String? message;
     ProductModel? item;
     CartProductModel? cartProductItem;
-    (_, _, cartProductItem) =
-        await _toggleCartItemUsecase.perform(int.parse(id));
-    if (cartItemsNotifier.value
+    var tmpProd = cartItemsNotifier.value
         .where((item) => item.product.id == id)
         .first
-        .product
-        .isFavourite) {
+        .product;
+    print('tmpProd.isFavourite: ${tmpProd.isFavourite}');
+    (isSuccess, _, cartProductItem) =
+        await _toggleCartItemUsecase.perform(int.parse(id));
+    
+    if (tmpProd.isFavourite) {
       _removeItem(id, cartProductItem);
     } else {
       try {
         (isSuccess, message, item) =
             await _moveToWishlist.perform(int.parse(id));
+        print('isSuccess: $isSuccess');
         if (isSuccess) {
           _removeItem(id, item!);
+          sl<HomeCubit>().addFavProductLocally(int.parse(tmpProd.id));
           emit(CartItemMovedToWislistSuccessState());
         } else {
           emit(CartItemMovedToWislistFailureState(e: message!));

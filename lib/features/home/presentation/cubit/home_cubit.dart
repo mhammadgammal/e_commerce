@@ -78,7 +78,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
   void onFavPressed(bool isFav, {int index = -1, String id = ''}) async {
     if (index == -1) {
       index = products.indexWhere((item) => item.id == id);
-    }else {
+    } else {
       products[index].isFavourite = !isFav;
     }
     emit(FavLocallyToggledState());
@@ -104,17 +104,19 @@ class HomeCubit extends Cubit<HomeCubitState> {
   }
 
   void removeFavProductLocally(int productId) {
-    var product =
-        products.where((product) => product.id == productId.toString()).first;
-    product.isFavourite = false;
+    products
+        .where((product) => product.id == productId.toString())
+        .first
+        .isFavourite = false;
     emit(FavoriteProductRemovedLocally());
   }
 
   void addFavProductLocally(int productId) {
-    var product =
-        products.where((product) => product.id == productId.toString()).first;
-    product.isFavourite = true;
-    
+    products
+        .where((product) => product.id == productId.toString())
+        .first
+        .isFavourite = true;
+
     emit(FavoriteProductAddedLocally());
   }
 
