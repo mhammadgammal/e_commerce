@@ -14,7 +14,8 @@ class CartCubit extends Cubit<CartState> {
   int expandedQuantityItem = -1;
   int selectedQuantityIndex = 0;
 
-  CartCubit(this._cartItemsUsecase, this._toggleCartItemUsecase)
+  CartCubit(
+      this._cartItemsUsecase, this._toggleCartItemUsecase, this._moveToWishlist)
       : super(CartInitial());
 
   static CartCubit get(context) => BlocProvider.of(context);
