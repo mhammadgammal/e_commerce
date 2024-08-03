@@ -35,8 +35,8 @@ class FavoriteProductsScreen extends StatelessWidget {
               child: GridView.count(
                 crossAxisCount: 2,
                 mainAxisSpacing: 1.0,
-                crossAxisSpacing: 1.0,
-                childAspectRatio: 1 / 1.45,
+                crossAxisSpacing: 0.3,
+                childAspectRatio: 1 / 1.75,
                 children: List.generate(
                   cubit.favoriteProducts.length,
                   (index) => FavoriteProductCardItem(
