@@ -47,6 +47,7 @@ class ProductCardItem extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                   WishListIcon(
+                    index: index,
                     isFavourite: product.isFavourite,
                     onFavPressed: onFavPressed,
                   ),
@@ -67,7 +68,6 @@ class ProductCardItem extends StatelessWidget {
                         child: ValueListenableBuilder(
                             valueListenable: cartItemsId,
                             builder: (context, cartItems, _) {
-                              print('update product item home');
                               return IconButton(
                                   icon: Icon(
                                     cartItems[product.id] == true
