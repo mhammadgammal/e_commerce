@@ -45,6 +45,7 @@ class AppCubit extends Cubit<AppState> {
                 sl.get(),
               ),
               ToggleCartItemUsecase(sl.get()),
+              sl.get(),
             )..fetchCartItems(),
           )
         ],
@@ -81,6 +82,7 @@ class AppCubit extends Cubit<AppState> {
             sl.get(),
           ),
           ToggleCartItemUsecase(sl.get()),
+          sl.get(),
         )..fetchCartItems(),
         child: const CartScreen(),
       )
