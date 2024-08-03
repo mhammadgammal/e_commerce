@@ -28,24 +28,28 @@ class FavoriteProductsScreen extends StatelessWidget {
               style: AppTextStyle.font35BlackBold,
             ),
           ),
-          body: SizedBox(
-            height: double.infinity,
-            child: Padding(
-              padding: const EdgeInsetsDirectional.all(15.0),
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 1.0,
-                crossAxisSpacing: 0.3,
-                childAspectRatio: 1 / 1.75,
-                children: List.generate(
-                  cubit.favoriteProducts.length,
-                  (index) => FavoriteProductCardItem(
-                    favProduct: cubit.favoriteProducts[index],
-                    showBottomSheet: cubit.showBottomSheet,
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              return SizedBox(
+                height: double.infinity,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.all(15.0),
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 1.0,
+                    crossAxisSpacing: 0.3,
+                    childAspectRatio: constraints.maxWidth > 400? 0.75 :1 / 1.75,
+                    children: List.generate(
+                      cubit.favoriteProducts.length,
+                      (index) => FavoriteProductCardItem(
+                        favProduct: cubit.favoriteProducts[index],
+                        showBottomSheet: cubit.showBottomSheet,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            ),
+              );
+            }
           ),
         );
       },
