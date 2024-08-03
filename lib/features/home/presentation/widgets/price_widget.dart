@@ -26,23 +26,29 @@ class PriceWidget extends StatelessWidget {
       ),
       Visibility(
           visible: int.parse(discount) > 0,
-          child: Row(
-            children: [
-              const SizedBox(
-                width: 5.0,
-              ),
-              Text(
-                double.parse(oldPrice).toInt().toString(),
-                style: AppTextStyle.oldPriceText,
-              ),
-              const SizedBox(
-                width: 5.0,
-              ),
-              Text(
-                '$discount%',
-                style: AppTextStyle.discount,
-              ),
-            ],
+          child: Expanded(
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 5.0,
+                ),
+                Text(
+                  double.parse(oldPrice).toInt().toString(),
+                  style: AppTextStyle.oldPriceText,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(
+                  width: 5.0,
+                ),
+                Text(
+                  '$discount%',
+                  style: AppTextStyle.discount,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ))
     ]);
   }

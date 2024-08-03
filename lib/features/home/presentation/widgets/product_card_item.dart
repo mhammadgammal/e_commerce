@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/notifiers/notifiers.dart';
+import 'package:e_commerce/core/utils/screen_utils.dart';
 import 'package:e_commerce/features/home/domain/entity/product_entity/product_model.dart';
 import 'package:e_commerce/features/home/presentation/widgets/price_widget.dart';
 import 'package:e_commerce/features/home/presentation/widgets/wish_list_icon_widget.dart';
@@ -27,7 +28,7 @@ class ProductCardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 183.6,
+      width: ScreenUtils.getScreenWidth(context) * 0.42,
       child: Card(
         child: Padding(
           padding: const EdgeInsetsDirectional.only(
