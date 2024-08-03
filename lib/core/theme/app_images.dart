@@ -17,4 +17,8 @@ class AppImages {
   static const String sallaCreditsIc = 'assets/images/icons/credits_ic.png';
   static const String wishlistIc = 'assets/images/icons/add_to_wishlist.png';
   // #endregion
+
+  // #region lotties
+  static const String noCartData = 'assets/no_cart_data.json';
+// #endregion
 }

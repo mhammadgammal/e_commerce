@@ -2,6 +2,7 @@ import 'package:e_commerce/core/router/app_navigator.dart';
 import 'package:e_commerce/core/utils/screen_utils.dart';
 import 'package:e_commerce/core/widgets/auth_error_dialogue.dart';
 import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:e_commerce/features/cart/presentation/widgets/no_cart_data_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -81,8 +82,10 @@ class _CartScreenState extends State<CartScreen> {
               builder:
                   (BuildContext context, List<CartProductModel> cartItems, _) {
                 print('cart items count in builder: $cartItems');
-                return ListView.builder(
-                    itemCount: cartItems.length,
+                return cartItems.isEmpty
+                    ? const NoCartDataBody()
+                    : ListView.builder(
+                        itemCount: cartItems.length,
                     itemBuilder: (context, index) {
                       print(
                           'cart items count in cart list view: ${cartItems.length}');
