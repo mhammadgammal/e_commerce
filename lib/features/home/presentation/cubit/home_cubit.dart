@@ -81,7 +81,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
     bool isFavToggled = false;
     String? message;
     try {
-      (isFavToggled, message) =
+      (isFavToggled, message, _) =
           await _changeFavoriteUsecase.perform(int.parse(products[index].id));
       print(isFavToggled);
       print(message);
