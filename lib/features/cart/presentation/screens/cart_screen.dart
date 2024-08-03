@@ -1,3 +1,4 @@
+import 'package:e_commerce/core/utils/screen_utils.dart';
 import 'package:e_commerce/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,7 @@ class _CartScreenState extends State<CartScreen> {
       },
       builder: (context, state) {
         var cubit = CartCubit.get(context);
-
+        var width = ScreenUtils.getScreenWidth(context);
         return Scaffold(
           appBar: AppBar(
             title: ValueListenableBuilder(
@@ -85,10 +86,14 @@ class _CartScreenState extends State<CartScreen> {
                               Expanded(
                                   child: Column(
                                     children: [
-                                      Text(
-                                        cartItems[index].product.title,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
+                                      SizedBox(
+                                        width: double.infinity,
+                                        child: Text(
+                                          cartItems[index].product.title,
+                                          maxLines: 2,
+                                          textAlign: TextAlign.start,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
                                       ),
                                       Row(
                                         children: [
@@ -186,8 +191,8 @@ class _CartScreenState extends State<CartScreen> {
                                           ],
                                         )),
                                   ),
-                                  const SizedBox(
-                                    width: 90.0,
+                                  SizedBox(
+                                    width: width> 400? width * 0.28: width * 0.13,
                                   ),
                                   Container(
                                     height: 30.0,

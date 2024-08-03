@@ -28,7 +28,7 @@ class ProductCardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: ScreenUtils.getScreenWidth(context) * 0.42,
+      width: ScreenUtils.getScreenWidth(context) * 0.52,
       child: Card(
         child: Padding(
           padding: const EdgeInsetsDirectional.only(
@@ -88,15 +88,17 @@ class ProductCardItem extends StatelessWidget {
                 height: 5.0,
               ),
               SizedBox(
-                width: 171.6,
+                width: double.infinity,
                 height: 35.0,
-                child: Text(
-                  product.title,
-                  textAlign: TextAlign.start,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
+                child: Expanded(
+                  child: Text(
+                    product.title,
+                    textAlign: TextAlign.start,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
