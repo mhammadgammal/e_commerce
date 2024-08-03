@@ -60,8 +60,8 @@ class AppRouter {
     RouterHelper.editProfile: (_) => const EditProfileScreen(),
     RouterHelper.productDetails: (context) {
       final product =
-          ModalRoute.of(context)!.settings.arguments as ProductModel;
-      return ProductDetailsScreen(productModel: product);
+          ModalRoute.of(context)!.settings.arguments as (int, ProductModel);
+      return ProductDetailsScreen(productRecord: product);
     },
   };
 }

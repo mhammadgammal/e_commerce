@@ -33,10 +33,8 @@ abstract class AppNavigator {
   ) =>
       Navigator.pushNamed(context, RouterHelper.editProfile);
 
-  static navigateToProductDetails(BuildContext context, ProductModel product) =>
-      Navigator.pushNamed(
-        context,
-        RouterHelper.productDetails,
-        arguments: product
-      );
+  static navigateToProductDetails(
+          BuildContext context, (int, ProductModel) product) =>
+      Navigator.pushNamed(context, RouterHelper.productDetails,
+          arguments: product);
 }
