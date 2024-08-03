@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class WishListIcon extends StatelessWidget {
   const WishListIcon(
-      {super.key, required this.isFavourite, required this.onFavPressed});
+      {super.key,
+      required this.isFavourite,
+      required this.onFavPressed,
+      required this.index});
 
+  final int index;
   final bool isFavourite;
   final void Function(int, bool) onFavPressed;
 
@@ -28,7 +32,10 @@ class WishListIcon extends StatelessWidget {
             isFavourite ? Icons.favorite : Icons.favorite_border,
             color: Colors.black,
           ),
-          onPressed: () => onFavPressed,
+          onPressed: () {
+            print('on wish list pressed');
+            onFavPressed(index, isFavourite);
+          },
         ),
       ),
     );
