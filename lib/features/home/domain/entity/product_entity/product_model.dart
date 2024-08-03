@@ -34,7 +34,7 @@ class ProductModel {
               ? []
               : List.generate(productsResponse['images'].length,
                   (index) => productsResponse['images'][index] as String),
-          description: productsResponse['description'],
+          description: productsResponse['description'] ?? '',
           isFavourite: productsResponse['in_favorites'] ?? true,
           isCart: productsResponse['in_cart'] ?? false);
 }
