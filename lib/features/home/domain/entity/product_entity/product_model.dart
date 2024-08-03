@@ -30,7 +30,10 @@ class ProductModel {
           discountPercentage: productsResponse['discount'].toString(),
           title: productsResponse['name'] ?? '',
           image: productsResponse['image'],
-          images: List.generate(productsResponse ['images'].length, (index) => productsResponse ['images'][index] as String),
+          images: productsResponse['images'] == null
+              ? []
+              : List.generate(productsResponse['images'].length,
+                  (index) => productsResponse['images'][index] as String),
           description: productsResponse['description'],
           isFavourite: productsResponse['in_favorites'] ?? true,
           isCart: productsResponse['in_cart'] ?? false);
