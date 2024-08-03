@@ -14,75 +14,73 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int counter = 0;
     return BlocConsumer<HomeCubit, HomeCubitState>(
       listener: (context, state) {
         if (state is RecommendedProductsLoadedSuccessfullyState ||
-            state is FavRemotlyToggledState || state is FavoriteProductAddedLocally) {
-          HomeCubit.get(context).countFavProducts().then((value) {
-            counter = value;
-          });
+            state is FavRemotlyToggledState ||
+            state is FavoriteProductAddedLocally) {
+          HomeCubit.get(context).countFavProducts();
         }
       },
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-        return LayoutBuilder(
-          builder: (context, constraints) {
-            return Scaffold(
-                appBar: AppBar(
-                  title: const Text(
-                    'Salla',
-                    style: AppTextStyle.font35BlackBold,
-                  ),
-                  actions: [
-                    // Search Bar
-                    SearchField(
-                      searchWidth: constraints.maxWidth > 400? constraints.maxWidth * 0.6: constraints.maxWidth * 0.5,
-                      searchController: TextEditingController(),
-                      onSearchFieldPressed: () {},
-                    ),
-                    IconButton(
-                      onPressed: () =>
-                          AppNavigator.navigateToFavorite(context).then((value) {
-                        if (value is int && value != -1) {
-                          cubit.removeFavProductLocally(value);
-                        }
-                      }),
-                      icon: Stack(
-                        alignment: AlignmentDirectional.topEnd,
-                        children: [
-                          const Icon(
-                            Icons.favorite_border,
-                            size: 33.0,
-                            color: Colors.black,
-                          ),
-                          Visibility(
-                            visible: counter > 0,
-                            child: CircleAvatar(
-                              radius: 10.0,
-                              backgroundColor: AppColors.primaryColor,
-                              child: Text(
-                                counter.toString(),
-                                style: const TextStyle(
-                                    color: Colors.white, fontSize: 12.0),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
+        return LayoutBuilder(builder: (context, constraints) {
+          return Scaffold(
+              appBar: AppBar(
+                title: const Text(
+                  'Salla',
+                  style: AppTextStyle.font35BlackBold,
                 ),
-                body: state is HomeCubitLoading
-                    ? const HomeBodyLoading()
-                    : HomeScreenBody(
-                        ads: cubit.ads,
-                        banners: cubit.banners,
-                        products: cubit.products,
-                        onFavPressed: cubit.onFavPressed,
-                        onCartPressed: cubit.onCartPressed));
-          }
-        );
+                actions: [
+                  // Search Bar
+                  SearchField(
+                    searchWidth: constraints.maxWidth > 400
+                        ? constraints.maxWidth * 0.6
+                        : constraints.maxWidth * 0.5,
+                    searchController: TextEditingController(),
+                    onSearchFieldPressed: () {},
+                  ),
+                  IconButton(
+                    onPressed: () =>
+                        AppNavigator.navigateToFavorite(context).then((value) {
+                      if (value is int && value != -1) {
+                        cubit.removeFavProductLocally(value);
+                      }
+                    }),
+                    icon: Stack(
+                      alignment: AlignmentDirectional.topEnd,
+                      children: [
+                        const Icon(
+                          Icons.favorite_border,
+                          size: 33.0,
+                          color: Colors.black,
+                        ),
+                        Visibility(
+                          visible: cubit.counter > 0,
+                          child: CircleAvatar(
+                            radius: 10.0,
+                            backgroundColor: AppColors.primaryColor,
+                            child: Text(
+                              cubit.counter.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12.0),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              body: state is HomeCubitLoading
+                  ? const HomeBodyLoading()
+                  : HomeScreenBody(
+                      ads: cubit.ads,
+                      banners: cubit.banners,
+                      products: cubit.products,
+                      onFavPressed: cubit.onFavPressed,
+                      onCartPressed: cubit.onCartPressed));
+        });
       },
     );
   }

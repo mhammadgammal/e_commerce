@@ -36,7 +36,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
   List<CategoryModel> categories = [];
   String ads = '';
   int currentIndex = 0;
-
+  int counter = 0;
   void fetch() async {
     emit(HomeCubitLoading());
     await _fetchRecommended();
@@ -120,14 +120,13 @@ class HomeCubit extends Cubit<HomeCubitState> {
     emit(FavoriteProductAddedLocally());
   }
 
-  Future<int> countFavProducts() async {
-    int count = 0;
+  Future<void> countFavProducts() async {
+
     for (var product in products) {
       if (product.isFavourite) {
-        count++;
+        counter++;
       }
     }
-    return count;
   }
 
   Future<void> onCartPressed(int index, bool isCartItem) async {
