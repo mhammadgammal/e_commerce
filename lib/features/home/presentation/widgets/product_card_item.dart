@@ -90,15 +90,13 @@ class ProductCardItem extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 height: 35.0,
-                child: Expanded(
-                  child: Text(
-                    product.title,
-                    textAlign: TextAlign.start,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
+                child: Text(
+                  product.title,
+                  textAlign: TextAlign.start,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
