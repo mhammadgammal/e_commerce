@@ -7,6 +7,7 @@ import 'package:e_commerce/features/home/domain/usecase/get_banners_usecase.dart
 import 'package:e_commerce/features/home/domain/usecase/get_products_usecase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/notifiers/notifiers.dart';
 import '../../domain/entity/banner_entity/banner_model.dart';
 import '../../domain/entity/product_entity/product_model.dart';
@@ -37,6 +38,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
   String ads = '';
   int currentIndex = 0;
   int counter = 0;
+
   void fetch() async {
     emit(HomeCubitLoading());
     await _fetchRecommended();
@@ -90,6 +92,7 @@ class HomeCubit extends Cubit<HomeCubitState> {
       print(isFavToggled);
       print(message);
       if (isFavToggled) {
+        isFav ? counter-- : counter++;
         emit(FavRemotlyToggledState());
       } else {
         products[index].isFavourite = !products[index].isFavourite;
@@ -121,7 +124,6 @@ class HomeCubit extends Cubit<HomeCubitState> {
   }
 
   Future<void> countFavProducts() async {
-
     for (var product in products) {
       if (product.isFavourite) {
         counter++;
