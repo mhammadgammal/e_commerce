@@ -31,37 +31,42 @@ class GreetingWidget extends StatelessWidget {
             topRight: Radius.circular(15.0),
           ),
         ),
-        child: ListTile(
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-            leading: CircleAvatar(
-              backgroundColor: Colors.grey,
-              child: Text('$firstNameChar$lastNameChar', style: const TextStyle(color: Colors.black),),
-            ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Ahlan $firstName',
-                  style: AppTextStyle.font17BlackBold,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            print('constraints.maxWidth: ${constraints.maxWidth}');
+            return ListTile(
+                contentPadding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                leading: CircleAvatar(
+                  backgroundColor: Colors.grey,
+                  child: Text('$firstNameChar$lastNameChar', style: const TextStyle(color: Colors.black),),
                 ),
-                Text(
-                  email,
-                  style: const TextStyle(fontSize: 14.5),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Ahlan $firstName',
+                      style: AppTextStyle.font17BlackBold,
+                    ),
+                    Text(
+                      email,
+                      style: TextStyle(fontSize: constraints.maxWidth> 400.0? 14.5: 11.5),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            trailing: Container(
-              padding: const EdgeInsetsDirectional.all(1.0),
-              width: 50.0,
-              height: 30.0,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  color: AppColors.lightGrey),
-              child: const Text('Edit',
-                  style: TextStyle(fontSize: 15.5, color: Colors.black)),
-            )),
+                trailing: Container(
+                  padding: const EdgeInsetsDirectional.all(1.0),
+                  width: 50.0,
+                  height: 30.0,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: AppColors.lightGrey),
+                  child: const Text('Edit',
+                      style: TextStyle(fontSize: 15.5, color: Colors.black)),
+                ));
+          }
+        ),
       ),
     );
   }

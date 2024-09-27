@@ -92,10 +92,6 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 35.0,
                       ),
-                      // const Text(
-                      //   ' ---------------------------------- OR ----------------------------------',
-                      //   style: AppTextStyle.font17BlackNormal,
-                      // ),
                       const Row(
                         children: [
                           Expanded(

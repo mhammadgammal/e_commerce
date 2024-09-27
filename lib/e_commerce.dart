@@ -15,8 +15,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class ECommerceApp extends StatelessWidget {
   const ECommerceApp({super.key});
 
-  static final AppLanguage appLanguage = sl<AppLanguage>();
-
   @override
   Widget build(BuildContext context) {
     String? token = sl<CacheHelper>().getString(key: CacheKeys.token);
@@ -26,8 +24,7 @@ class ECommerceApp extends StatelessWidget {
       create: (context) => ProfileCubit(
           GetProfileLocalUsecase(sl.get()), LogoutUsecase(sl.get()))
         ..getUserData()
-        ..prepareProfileGroup()
-        ,
+        ..prepareProfileGroup(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
@@ -37,7 +34,7 @@ class ECommerceApp extends StatelessWidget {
                 ? RouterHelper.root
                 : RouterHelper.login,
         routes: AppRouter.generateRoute,
-        locale: appLanguage.appLocal,
+        locale: sl<AppLanguage>().appLocal,
         supportedLocales: LocalizeConstants.supportedLocales,
         localizationsDelegates: LocalizeConstants.delegates,
       ),

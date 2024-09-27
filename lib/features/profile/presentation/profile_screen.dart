@@ -50,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
-                                    childAspectRatio: 20 / 9),
+                                    childAspectRatio: 20 / 10),
                             itemCount: 4,
                             itemBuilder: (context, index) => Card(
                               child: ListTile(
