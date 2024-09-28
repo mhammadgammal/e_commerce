@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:e_commerce/core/cache/cache_helper.dart';
+import 'package:e_commerce/core/data/user_model.dart';
 import 'package:e_commerce/core/utils/api_utils/dio_helper.dart';
 import 'package:e_commerce/features/authentication/data/network/authentication_api_service.dart';
 import 'package:e_commerce/features/authentication/data/repositories/authentcation_repository_impl.dart';
-import 'package:e_commerce/core/data/user_model.dart';
 import 'package:e_commerce/features/cart/data/network/cart_api_service.dart';
 import 'package:e_commerce/features/cart/data/repository/cart_repository_impl.dart';
 import 'package:e_commerce/features/categories/data/network/categories_api_service.dart';
@@ -13,6 +13,7 @@ import 'package:e_commerce/features/home/presentation/cubit/home_cubit.dart';
 import 'package:e_commerce/features/profile/data/data_source/local/profile_db_service.dart';
 import 'package:e_commerce/features/profile/data/repository/profile_repository_impl.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../features/cart/domain/usecase/toggle_cart_item_usecase.dart';
@@ -25,7 +26,6 @@ import '../../features/home/domain/usecase/get_banners_usecase.dart';
 import '../../features/home/domain/usecase/get_products_usecase.dart';
 import '../../features/profile/data/data_source/remote/profle_api_service.dart';
 import '../utils/localization/app_localization.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 final sl = GetIt.instance;
 
@@ -64,8 +64,8 @@ Future<void> init() async {
   // #endregion
 
   // #region Authentication
-  sl.registerLazySingleton<AuthentcationRepositoryImpl>(
-      () => AuthentcationRepositoryImpl(sl.get()));
+  sl.registerLazySingleton<AuthenticationRepositoryImpl>(
+      () => AuthenticationRepositoryImpl(sl.get()));
   sl.registerLazySingleton<AuthenticationApiServiceImpl>(
       () => AuthenticationApiServiceImpl());
   // #endregion
