@@ -11,8 +11,8 @@
 #include <permission_handler_windows/permission_handler_windows_plugin.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-    FirebaseAuthPluginCApiRegisterWithRegistrar(
-            registry->GetRegistrarForPlugin("FirebaseAuthPluginCApi"));
+  FirebaseAuthPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FirebaseAuthPluginCApi"));
   FirebaseCorePluginCApiRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FirebaseCorePluginCApi"));
   PermissionHandlerWindowsPluginRegisterWithRegistrar(
