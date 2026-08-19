@@ -45,7 +45,7 @@ abstract final class AppTheme {
             WidgetStatePropertyAll<Color>(AppColors.complementaryColor3)),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
         backgroundColor: AppColors.darkShade7, foregroundColor: Colors.white),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       elevation: 1.5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(
