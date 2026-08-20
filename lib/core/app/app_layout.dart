@@ -15,8 +15,7 @@ class AppLayout extends StatefulWidget {
 class _AppLayoutState extends State<AppLayout> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, AppState>(
-      listener: (context, state) {},
+    return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         final cubit = AppCubit.get(context);
         return Scaffold(
